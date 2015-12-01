@@ -19,6 +19,7 @@
 #include "SkyBox.h"
 #include "BezierCurve.h"
 #include "Maze.h"
+#include <time.h>
 
 #define PI_OVER_2 1.57079
 
@@ -49,10 +50,11 @@ BezierCurve *curve1, *curve2, *curve3, *curve4, *curveV, *curveH;
 std::vector<Vector3> cPts;
 std::vector<BezierCurve*> curvesV;
 std::vector<BezierCurve*> curvesH;
-Maze maze(5);
+Maze maze(time(NULL));
+
 
 void Window::initialize(void)
-{
+{	
 	//Setup the directional light
 	Vector4 lightPos(-5.0, 5.0, 10.0, 0.0);
 	Globals::dir.position = lightPos;
@@ -166,7 +168,7 @@ void Window::displayCallback()
 	glVertex3f(50, -10, 50);
 	glVertex3f(-50, -10, 50);
 	glEnd();*/
-
+	//glDisable(GL_LIGHTING);
 	maze.draw();
     //Pop off the changes we made to the matrix stack this frame
     glPopMatrix();
@@ -277,8 +279,8 @@ void Window::specialCallback(int key, int x, int y){
 			//current = &Globals::house;
 			object.setToDraw(current);
 			//glDisable(GL_LIGHTING);
-			e.set(0, 54.14, 24.14);
-			d.set(0, 0, 0);
+			e.set(30, 100, -30);
+			d.set(25, 0, -25);
 			up.set(0, 1, 0);
 			Globals::camera->set(e,d,up);
 			
