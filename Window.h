@@ -8,6 +8,7 @@ class Window	  // OpenGL output window related routines
 public:
     
     static int width, height; 	            // window size
+    static int time, frame, timebase;
     
     static void initialize(void);
     static void idleCallback(void);

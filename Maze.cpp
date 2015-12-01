@@ -102,6 +102,8 @@ std::set<Cells*> Maze::setMatch(Cells *toFind){
 			}
 		}
 	}
+    std::set<Cells*> s;
+    return s; // shall not be reached
 }
 
 void Maze::draw(){

@@ -2,7 +2,7 @@
 #include "limits.h"
 #include <cmath>
 #include <iostream>
-#include <windows.h>
+//#include <windows.h>
 
 #ifdef __APPLE__
     #include <GLUT/glut.h>
@@ -14,6 +14,7 @@
 #include "math.h"
 #include <sstream>
 #include <fstream>
+#include <cmath>
 
 Vector3 amb, dif, spec;
 float shine;
@@ -213,13 +214,13 @@ void OBJObject::parse(std::string& filename, float scale)
 					float y = std::stof(tokens.at(2));
 					float z = std::stof(tokens.at(3));
 
-					this->maxX = max(x, this->maxX);
-					this->maxY = max(y, this->maxY);
-					this->maxZ = max(z, this->maxZ);
+                    this->maxX = std::max(x, this->maxX);
+                    this->maxY = std::max(y, this->maxY);
+                    this->maxZ = std::max(z, this->maxZ);
 
-					this->minX = min(x, this->minX);
-					this->minY = min(y, this->minY);
-					this->minZ = min(z, this->minZ);
+                    this->minX = std::min(x, this->minX);
+                    this->minY = std::min(y, this->minY);
+                    this->minZ = std::min(z, this->minZ);
 
 					vertices->push_back(new Vector3(x, y, z));
 				}

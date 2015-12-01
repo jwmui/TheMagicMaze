@@ -1,5 +1,11 @@
 #include "Flag.h"
 
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
+
 Flag::Flag(BezierCurve* c0, BezierCurve* c1, BezierCurve* c2, BezierCurve* c3, std::vector<BezierCurve*> cV, std::vector<BezierCurve*> cH)
 {
 	this->c0 = c0;

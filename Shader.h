@@ -17,7 +17,12 @@
 
 #ifndef _SHADER_H_
 #define _SHADER_H_
-#include <GL/GLee.h>
+#ifdef __APPLE__
+    #include <OpenGL/gl3.h>
+    #include <OpenGL/glext.h>
+#else
+    #include "glee.h"
+#endif
 
 
 /*! Handles GLSL shaders.  It can load the code from a file or read straight

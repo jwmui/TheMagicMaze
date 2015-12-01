@@ -9,7 +9,7 @@ public:
 	void draw(int);
 	Vector3 rasterizeVertex(Vector4);
 	void rasterizeTriangle(Vector3, Vector3, Vector3, Vector3, Vector3, Vector3, bool);
-	void Rasterizer::setDebug(int debug1);
+	void setDebug(int);
 	void reshape(int, int);
 	void loadData();	
 	void setToDraw(Drawable*);

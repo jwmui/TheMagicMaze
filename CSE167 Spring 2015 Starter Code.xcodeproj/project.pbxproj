@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E45D6711C0D97B7004700A3 /* Maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D66E1C0D97B7004700A3 /* Maze.cpp */; settings = {ASSET_TAGS = (); }; };
+		7E45D6721C0D97B7004700A3 /* Cells.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D6701C0D97B7004700A3 /* Cells.cpp */; settings = {ASSET_TAGS = (); }; };
+		7E45D6821C0D9F96004700A3 /* Tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D6751C0D9F96004700A3 /* Tree.cpp */; settings = {ASSET_TAGS = (); }; };
+		7E45D6831C0D9F96004700A3 /* SkyBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D6771C0D9F96004700A3 /* SkyBox.cpp */; settings = {ASSET_TAGS = (); }; };
+		7E45D6841C0D9F96004700A3 /* Rasterizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D67A1C0D9F96004700A3 /* Rasterizer.cpp */; settings = {ASSET_TAGS = (); }; };
+		7E45D6851C0D9F96004700A3 /* House.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D67C1C0D9F96004700A3 /* House.cpp */; settings = {ASSET_TAGS = (); }; };
+		7E45D6861C0D9F96004700A3 /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D67F1C0D9F96004700A3 /* Flag.cpp */; settings = {ASSET_TAGS = (); }; };
+		7E45D6871C0D9F96004700A3 /* BezierCurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D6811C0D9F96004700A3 /* BezierCurve.cpp */; settings = {ASSET_TAGS = (); }; };
 		D40AFA801AD1E2E7008D61CC /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D40AFA7E1AD1E2E7008D61CC /* Shader.cpp */; };
 		D42FFC311AAFCC9C006F8E9C /* Matrix4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D42FFC2A1AAFCC9C006F8E9C /* Matrix4.cpp */; };
 		D42FFC321AAFCC9C006F8E9C /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D42FFC2C1AAFCC9C006F8E9C /* Window.cpp */; };
@@ -43,6 +51,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7E45D66D1C0D97B7004700A3 /* Maze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Maze.h; sourceTree = SOURCE_ROOT; };
+		7E45D66E1C0D97B7004700A3 /* Maze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Maze.cpp; sourceTree = SOURCE_ROOT; };
+		7E45D66F1C0D97B7004700A3 /* Cells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cells.h; sourceTree = SOURCE_ROOT; };
+		7E45D6701C0D97B7004700A3 /* Cells.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cells.cpp; sourceTree = SOURCE_ROOT; };
+		7E45D6731C0D9F96004700A3 /* VertexShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = VertexShader.vert; sourceTree = SOURCE_ROOT; };
+		7E45D6741C0D9F96004700A3 /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tree.h; sourceTree = SOURCE_ROOT; };
+		7E45D6751C0D9F96004700A3 /* Tree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tree.cpp; sourceTree = SOURCE_ROOT; };
+		7E45D6761C0D9F96004700A3 /* SkyBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyBox.h; sourceTree = SOURCE_ROOT; };
+		7E45D6771C0D9F96004700A3 /* SkyBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SkyBox.cpp; sourceTree = SOURCE_ROOT; };
+		7E45D6781C0D9F96004700A3 /* resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resource.h; sourceTree = SOURCE_ROOT; };
+		7E45D6791C0D9F96004700A3 /* Rasterizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rasterizer.h; sourceTree = SOURCE_ROOT; };
+		7E45D67A1C0D9F96004700A3 /* Rasterizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rasterizer.cpp; sourceTree = SOURCE_ROOT; };
+		7E45D67B1C0D9F96004700A3 /* House.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = House.h; sourceTree = SOURCE_ROOT; };
+		7E45D67C1C0D9F96004700A3 /* House.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = House.cpp; sourceTree = SOURCE_ROOT; };
+		7E45D67D1C0D9F96004700A3 /* FragmentShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = FragmentShader.frag; sourceTree = SOURCE_ROOT; };
+		7E45D67E1C0D9F96004700A3 /* Flag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flag.h; sourceTree = SOURCE_ROOT; };
+		7E45D67F1C0D9F96004700A3 /* Flag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Flag.cpp; sourceTree = SOURCE_ROOT; };
+		7E45D6801C0D9F96004700A3 /* BezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierCurve.h; sourceTree = SOURCE_ROOT; };
+		7E45D6811C0D9F96004700A3 /* BezierCurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BezierCurve.cpp; sourceTree = SOURCE_ROOT; };
 		D40AFA7E1AD1E2E7008D61CC /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = SOURCE_ROOT; };
 		D40AFA7F1AD1E2E7008D61CC /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = SOURCE_ROOT; };
 		D42FFC1E1AAFC90E006F8E9C /* CSE167 Spring 2015 Starter Code */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CSE167 Spring 2015 Starter Code"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,7 +146,26 @@
 		D42FFC201AAFC90E006F8E9C /* CSE167 Spring 2015 Starter Code */ = {
 			isa = PBXGroup;
 			children = (
+				7E45D6731C0D9F96004700A3 /* VertexShader.vert */,
+				7E45D6741C0D9F96004700A3 /* Tree.h */,
+				7E45D6751C0D9F96004700A3 /* Tree.cpp */,
+				7E45D6761C0D9F96004700A3 /* SkyBox.h */,
+				7E45D6771C0D9F96004700A3 /* SkyBox.cpp */,
+				7E45D6781C0D9F96004700A3 /* resource.h */,
+				7E45D6791C0D9F96004700A3 /* Rasterizer.h */,
+				7E45D67A1C0D9F96004700A3 /* Rasterizer.cpp */,
+				7E45D67B1C0D9F96004700A3 /* House.h */,
+				7E45D67C1C0D9F96004700A3 /* House.cpp */,
+				7E45D67D1C0D9F96004700A3 /* FragmentShader.frag */,
+				7E45D67E1C0D9F96004700A3 /* Flag.h */,
+				7E45D67F1C0D9F96004700A3 /* Flag.cpp */,
+				7E45D6801C0D9F96004700A3 /* BezierCurve.h */,
+				7E45D6811C0D9F96004700A3 /* BezierCurve.cpp */,
 				D42FFC631AB67F52006F8E9C /* main.cpp */,
+				7E45D66D1C0D97B7004700A3 /* Maze.h */,
+				7E45D66E1C0D97B7004700A3 /* Maze.cpp */,
+				7E45D66F1C0D97B7004700A3 /* Cells.h */,
+				7E45D6701C0D97B7004700A3 /* Cells.cpp */,
 				D42FFC2C1AAFCC9C006F8E9C /* Window.cpp */,
 				D42FFC301AAFCC9C006F8E9C /* Window.h */,
 				D42FFC651AB68012006F8E9C /* Globals.cpp */,
@@ -215,19 +261,27 @@
 				D42FFC5C1AAFCF71006F8E9C /* Texture.cpp in Sources */,
 				D42FFC5A1AAFCF71006F8E9C /* UpdateData.cpp in Sources */,
 				D42FFC5B1AAFCF71006F8E9C /* DrawData.cpp in Sources */,
+				7E45D6831C0D9F96004700A3 /* SkyBox.cpp in Sources */,
 				D42FFC581AAFCF71006F8E9C /* Light.cpp in Sources */,
 				D42FFC331AAFCC9C006F8E9C /* Cube.cpp in Sources */,
+				7E45D6851C0D9F96004700A3 /* House.cpp in Sources */,
 				D4D588151ACE591500D1F802 /* OBJObject.cpp in Sources */,
 				D42FFC541AAFCF71006F8E9C /* Drawable.cpp in Sources */,
 				D42FFC531AAFCF71006F8E9C /* Color.cpp in Sources */,
+				7E45D6821C0D9F96004700A3 /* Tree.cpp in Sources */,
 				D42FFC521AAFCF71006F8E9C /* Vector3.cpp in Sources */,
+				7E45D6721C0D97B7004700A3 /* Cells.cpp in Sources */,
 				D42FFC641AB67F52006F8E9C /* main.cpp in Sources */,
 				D42FFC551AAFCF71006F8E9C /* Camera.cpp in Sources */,
 				D42FFC321AAFCC9C006F8E9C /* Window.cpp in Sources */,
 				D42FFC5D1AAFCF71006F8E9C /* Material.cpp in Sources */,
+				7E45D6711C0D97B7004700A3 /* Maze.cpp in Sources */,
+				7E45D6841C0D9F96004700A3 /* Rasterizer.cpp in Sources */,
 				D4FEE23F1AC895C6006CF92D /* MathTestBench.cpp in Sources */,
+				7E45D6861C0D9F96004700A3 /* Flag.cpp in Sources */,
 				D42FFC5E1AAFCF71006F8E9C /* Vector4.cpp in Sources */,
 				D42FFC591AAFCF71006F8E9C /* Sphere.cpp in Sources */,
+				7E45D6871C0D9F96004700A3 /* BezierCurve.cpp in Sources */,
 				D40AFA801AD1E2E7008D61CC /* Shader.cpp in Sources */,
 				D42FFC311AAFCC9C006F8E9C /* Matrix4.cpp in Sources */,
 			);

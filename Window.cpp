@@ -1,8 +1,11 @@
 #include <iostream>
 #include "Flag.h"
 
-
+#ifdef __APPLE__
+    #include <GLUT/glut.h>
+#else
     #include <GL/glut.h>
+#endif
 
 
 #include "Window.h"
@@ -31,7 +34,7 @@ Vector3 e, d, up;
 Rasterizer object(current, debugSet);
 int renderMode = 0;
 int part = 1;
-int time, frame = 0, timebase = 0;
+int Window::time, Window::frame=0, Window::timebase=0;
 float fps;
 int lastX;
 int lastY;
@@ -54,14 +57,14 @@ void Window::initialize(void)
 	Vector4 lightPos(-5.0, 5.0, 10.0, 0.0);
 	Globals::dir.position = lightPos;
 	Globals::dir.spotCutoff = 180.0;
-	Globals::dir.spotDirection = new float[]{0.0, 0.0, -1.0};
+	Globals::dir.spotDirection = new float[3]{0.0, 0.0, -1.0};
 	Globals::dir.exponent = 0.0;
 	Globals::dir.quadraticAttenuation = 0.02;
 	//Setup the point light
 	Vector4 lightPos1(5.0, 5.0, 10.0, 1.0);
 	Globals::point.position = lightPos1;
 	Globals::point.spotCutoff = 180.0;
-	Globals::point.spotDirection = new float[]{0.0, 0.0, -1.0};
+	Globals::point.spotDirection = new float[3]{0.0, 0.0, -1.0};
 	Globals::point.exponent = 0.0;
 	Globals::point.quadraticAttenuation = 0.02;
 	//Setup the spot light
@@ -73,7 +76,7 @@ void Window::initialize(void)
 	float mag = direction.magnitude();
 	Globals::spot.position = lightPos2;
 	Globals::spot.spotCutoff = 30.0;
-	Globals::spot.spotDirection = new float[]{direction[0], direction[1], direction[2]};
+	Globals::spot.spotDirection = new float[3]{direction[0], direction[1], direction[2]};
 	Globals::spot.exponent = 2.0;
 	Globals::spot.quadraticAttenuation = 0.02;
 
@@ -396,7 +399,7 @@ void Window::motionCallback(int x, int y){
 				Vector4 lightPos(Globals::spot.toWorld.get(3, 0), Globals::spot.toWorld.get(3, 1), Globals::spot.toWorld.get(3, 2), 1.0);
 				Globals::spot.position = lightPos;
 				Vector3 direction = origin- lightPos.toVector3();
-				Globals::spot.spotDirection = new float[]{direction[0], direction[1], direction[2]};
+				Globals::spot.spotDirection = new float[3]{direction[0], direction[1], direction[2]};
 
 			}
 
