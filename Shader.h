@@ -21,7 +21,7 @@
     #include <OpenGL/gl3.h>
     #include <OpenGL/glext.h>
 #else
-    #include "glee.h"
+#include <GL/GLee.h>
 #endif
 
 

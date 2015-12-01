@@ -1,15 +1,16 @@
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
 #include "OBJObject.h"
 #include "limits.h"
 #include <cmath>
 #include <iostream>
 //#include <windows.h>
 
-#ifdef __APPLE__
-    #include <GLUT/glut.h>
-#else
-    #include <GL/glut.h>
-#endif
 
+#include <algorithm> 
 #include "Window.h"
 #include "math.h"
 #include <sstream>

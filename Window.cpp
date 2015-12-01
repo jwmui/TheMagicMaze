@@ -18,7 +18,7 @@
 #include <vector>
 #include "SkyBox.h"
 #include "BezierCurve.h"
-
+#include "Maze.h"
 
 #define PI_OVER_2 1.57079
 
@@ -49,7 +49,7 @@ BezierCurve *curve1, *curve2, *curve3, *curve4, *curveV, *curveH;
 std::vector<Vector3> cPts;
 std::vector<BezierCurve*> curvesV;
 std::vector<BezierCurve*> curvesH;
-
+Maze maze(5);
 
 void Window::initialize(void)
 {
@@ -156,16 +156,18 @@ void Window::displayCallback()
 	Globals::point.draw(Globals::drawData);
 	Globals::spot.draw(Globals::drawData);
     
-	(*current).draw(Globals::drawData);
+	//(*current).draw(Globals::drawData);
 
 
-	glBegin(GL_QUADS);
+	/*glBegin(GL_QUADS);
 	glNormal3f(0.0, -1.0, 0.0);
-	glVertex3f(-50, -5, -50);
-	glVertex3f(50, -5, -50);
-	glVertex3f(50, -5, 50);
-	glVertex3f(-50, -5, 50);
-	glEnd();
+	glVertex3f(-50, -10, -50);
+	glVertex3f(50, -10, -50);
+	glVertex3f(50, -10, 50);
+	glVertex3f(-50, -10, 50);
+	glEnd();*/
+
+	maze.draw();
     //Pop off the changes we made to the matrix stack this frame
     glPopMatrix();
     
@@ -275,7 +277,7 @@ void Window::specialCallback(int key, int x, int y){
 			//current = &Globals::house;
 			object.setToDraw(current);
 			//glDisable(GL_LIGHTING);
-			e.set(0, 24.14, 24.14);
+			e.set(0, 54.14, 24.14);
 			d.set(0, 0, 0);
 			up.set(0, 1, 0);
 			Globals::camera->set(e,d,up);

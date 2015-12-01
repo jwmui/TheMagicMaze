@@ -18,6 +18,7 @@
 #include "Vector3.h"
 #include "Vector4.h"
 #include "Drawable.h"
+#include <algorithm> 
 
 static int window_width = 512, window_height = 512;
 static float* pixels = new float[window_width * window_height * 3];
@@ -89,21 +90,21 @@ void Rasterizer::rasterizeTriangle(Vector3 a, Vector3 b, Vector3 c, Vector3 a1, 
 	Vector3 p;
 	Vector3 Va, Vb, Vc, V;
 	
-	minX = std::min(a[0], b[0]);
-    minX = std::min((float)minX, c[0]);
-	minX = std::max(minX, 0);
+	minX = min(a[0], b[0]);
+    minX = min((float)minX, c[0]);
+	minX = max(minX, 0);
 
-	minY = std::min(a[1], b[1]);
-	minY = std::min((float)minY, c[1]);
-	minY = std::max(minY, 0);
+	minY = min(a[1], b[1]);
+	minY = min((float)minY, c[1]);
+	minY = max(minY, 0);
 
-	maxX = std::max(a[0], b[0]);
-	maxX = std::max((float)maxX, c[0]);
-	maxX = std::min(maxX, window_width-1);
+	maxX = max(a[0], b[0]);
+	maxX = max((float)maxX, c[0]);
+	maxX = min(maxX, window_width-1);
 
-	maxY = std::max(a[1], b[1]);
-	maxY = std::max((float)maxY, c[1]);
-	maxY = std::min(maxY, window_height-1);
+	maxY = max(a[1], b[1]);
+	maxY = max((float)maxY, c[1]);
+	maxY = min(maxY, window_height-1);
 	
 	for (int x = minX; x <= maxX; x++){
 		for (int y = minY; y <= maxY; y++){
