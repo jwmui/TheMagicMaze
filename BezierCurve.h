@@ -8,7 +8,7 @@ public:
 	~BezierCurve();
 	float getScalar(int, float);
 	Vector3 newPoint(float);
-	Vector3 BezierCurve::newPoint(float, Vector3, Vector3, Vector3, Vector3);
+	Vector3 newPoint(float, Vector3, Vector3, Vector3, Vector3);
 	void draw();
 	float factorial(int);
 	std::vector<Vector3> ctPts;

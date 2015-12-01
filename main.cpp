@@ -2,8 +2,12 @@
 #include <stdlib.h>
 #include <iostream>
 
+#ifdef __APPLE__
+    #include <GLUT/glut.h>
+    /* freeglut */
+#else
     #include <GL/freeglut.h>
-
+#endif
 
 #include "Window.h"
 #include "Cube.h"
@@ -46,7 +50,7 @@ int main(int argc, char *argv[])
 	glutSpecialFunc(Window::specialCallback);
 	glutMouseFunc(Window::mouseCallback);
 	glutMotionFunc(Window::motionCallback);
-	glutMouseWheelFunc(Window::mouseWheelCallback);
+	//glutMouseWheelFunc(Window::mouseWheelCallback);
     //Register the callback for the mouse passive motion
 
 

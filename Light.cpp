@@ -11,9 +11,9 @@
 
 Light::Light() : Drawable()
 {
-	ambientColor = new float[]{0.1f,0.1f,0.1f,1.0f};
-	diffuseColor = new float[]{0.5f, 0.5f, 0.5f, 1.0f};
-	specularColor = new float[]{0.5f, 0.5f, 0.5f, 1.0f};
+	ambientColor = new float[4]{0.1f,0.1f,0.1f,1.0f};
+	diffuseColor = new float[4]{0.5f, 0.5f, 0.5f, 1.0f};
+	specularColor = new float[4]{0.5f, 0.5f, 0.5f, 1.0f};
     
     constantAttenuation = 1.0;
     linearAttenuation = 0.0;

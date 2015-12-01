@@ -7,7 +7,7 @@ class Maze
 {
 public:
 	Maze(int);
-	std::set<Cells*> Maze::setMatch(Cells*);
+	std::set<Cells*> setMatch(Cells*);
 	std::vector<std::set<Cells*>> *sets = new std::vector<std::set<Cells*>>();
 	void draw();
 	~Maze();
