@@ -1,0 +1,91 @@
+﻿Build started 11/12/2015 4:04:55 PM.
+     1>Project "C:\Users\Jonathan\Desktop\CSE167-Spring-2015-Starter-Code-master\CSE167-Spring-2015-Starter-Code-master\Cube.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Cube.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Jonathan\Desktop\freeglut-MSVC-3.0.0-2.mp\freeglut\include" /I"c:\libs\glutC:\Users\Jonathan\Desktop\freeglut-MSVC-3.0.0-2.mp\freeglut\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Color.cpp DrawData.cpp Flag.cpp UpdateData.cpp Vector3.cpp Vector4.cpp Window.cpp
+         Window.cpp
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\flag.h(17): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(59): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(66): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(78): warning C4305: '=' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(156): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(158): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(299): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(305): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(311): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(317): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(323): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(329): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(358): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(378): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(291): warning C4101: 'y1' : unreferenced local variable
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(291): warning C4101: 'x1' : unreferenced local variable
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(460): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(471): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(615): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(619): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(537): warning C4101: 'pixel_diff' : unreferenced local variable
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(538): warning C4101: 'zoom_factor' : unreferenced local variable
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(637): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(639): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(640): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(668): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(670): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(693): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(695): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(701): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\window.cpp(707): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Generating Code...
+         Compiling...
+         Flag.cpp
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\flag.h(17): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\flag.cpp(55): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\flag.cpp(56): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\flag.cpp(57): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\flag.cpp(58): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\flag.cpp(59): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\flag.cpp(60): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\flag.cpp(62): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\flag.cpp(72): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\flag.cpp(75): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\flag.cpp(78): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\jonathan\desktop\cse167-spring-2015-starter-code-master\cse167-spring-2015-starter-code-master\flag.cpp(81): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         Vector4.cpp
+         Vector3.cpp
+         UpdateData.cpp
+         DrawData.cpp
+         Color.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Debug\CSE167 HW5.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Jonathan\Desktop\freeglut-MSVC-3.0.0-2.mp\freeglut\lib" GLee.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:LIBC.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Debug\CSE167 HW5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Debug\CSE167 HW5.lib" /MACHINE:X86 /SAFESEH "Debug\CSE167 HW5.res"
+         Debug\GLee.obj
+         Debug\BezierCurve.obj
+         Debug\Flag.obj
+         Debug\House.obj
+         Debug\main.obj
+         Debug\Camera.obj
+         Debug\Color.obj
+         Debug\Cube.obj
+         Debug\Light.obj
+         Debug\Material.obj
+         Debug\Matrix4.obj
+         Debug\Drawable.obj
+         Debug\DrawData.obj
+         Debug\Rasterizer.obj
+         Debug\Shader.obj
+         Debug\SkyBox.obj
+         Debug\Sphere.obj
+         Debug\Texture.obj
+         Debug\UpdateData.obj
+         Debug\Vector3.obj
+         Debug\Vector4.obj
+         Debug\Window.obj
+         Debug\Globals.obj
+         Debug\OBJObject.obj
+         Cube.vcxproj -> C:\Users\Jonathan\Desktop\CSE167-Spring-2015-Starter-Code-master\CSE167-Spring-2015-Starter-Code-master\Debug\CSE167 HW5.exe
+     1>Done Building Project "C:\Users\Jonathan\Desktop\CSE167-Spring-2015-Starter-Code-master\CSE167-Spring-2015-Starter-Code-master\Cube.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.71
