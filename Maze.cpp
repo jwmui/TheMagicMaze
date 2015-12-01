@@ -29,7 +29,7 @@ Maze::Maze(int seed)
 		//std::cout << dir;
 		switch (dir){
 		case 0:
-			std::cout << "left";
+			//std::cout << "left";
 			if (cur->leftW && cur->x != 0){
 				Cells *neigh = grid[cur->x - 1][cur->y];
 				std::set<Cells*> c1 = setMatch(neigh);
@@ -44,7 +44,7 @@ Maze::Maze(int seed)
 			}
 			break;
 		case 1:
-			std::cout << "right";
+			//std::cout << "right";
 			if(cur->rightW && cur->x != size - 1){
 				Cells *neigh = grid[cur->x + 1][cur->y];
 				std::set<Cells*> c1 = setMatch(neigh);
@@ -59,7 +59,7 @@ Maze::Maze(int seed)
 			}
 			break;
 		case 2:
-			std::cout << "top";
+			//std::cout << "top";
 			if(cur->topW && cur->y != 0){
 				Cells *neigh = grid[cur->x][cur->y - 1];
 				std::set<Cells*> c1 = setMatch(neigh);
@@ -74,7 +74,7 @@ Maze::Maze(int seed)
 			}
 			break;
 		case 3:
-			std::cout << "bottom";
+			//std::cout << "bottom";
 			if (cur->bottomW && cur->y != size - 1){
 				Cells *neigh = grid[cur->x][cur->y + 1];
 				std::set<Cells*> c1 = setMatch(neigh);

@@ -2,6 +2,7 @@
 #include <set>
 #include "Cells.h"
 #include <vector>
+#include <GL/freeglut.h>
 class Maze
 {
 public:
