@@ -128,27 +128,79 @@ void Maze::draw(){
 	}
 }
 
-void Maze::drawCube(int left, int right, int top, int bottom){
+void Maze::drawCube(int left, int right, int front, int back){
 	float halfSize = 10;
+	float thickness = 1.0;
+	float halfSize1 = 10 + thickness;
 
 	glBegin(GL_QUADS);
 	glColor3f(0.5, 0.5, 0.5);
 	// Draw front (top) face:
-	if (top){
-		glNormal3f(0.0, 0.0, 1.0);
+	if (front){
+		glNormal3f(0.0, 0.0, 1.0);//front
 		glVertex3f(-halfSize, halfSize, halfSize);
 		glVertex3f(halfSize, halfSize, halfSize);
 		glVertex3f(halfSize, -halfSize, halfSize);
 		glVertex3f(-halfSize, -halfSize, halfSize);
+
+		glNormal3f(0.0, 0.0, -1.0);//back
+		glVertex3f(-halfSize, halfSize, halfSize1);
+		glVertex3f(halfSize, halfSize, halfSize1);
+		glVertex3f(halfSize, -halfSize, halfSize1);
+		glVertex3f(-halfSize, -halfSize, halfSize1);
+
+		glNormal3f(-1.0, 0.0, 0.0);//left
+		glVertex3f(-halfSize, halfSize, halfSize);
+		glVertex3f(-halfSize, halfSize, halfSize1);
+		glVertex3f(-halfSize, -halfSize, halfSize1);
+		glVertex3f(-halfSize, -halfSize, halfSize);
+
+		glNormal3f(1.0, 0.0, 0.0);//right
+		glVertex3f(halfSize, halfSize, halfSize);
+		glVertex3f(halfSize, halfSize, halfSize1);
+		glVertex3f(halfSize, -halfSize, halfSize1);
+		glVertex3f(halfSize, -halfSize, halfSize);
+
+		glNormal3f(0.0, 1.0, 0.0);//top
+		glVertex3f(-halfSize, halfSize, halfSize);
+		glVertex3f(-halfSize, halfSize, halfSize1);
+		glVertex3f(halfSize, halfSize, halfSize1);
+		glVertex3f(halfSize, halfSize, halfSize);
 	}
 
 	// Draw left side:
 	if (left){
-		glNormal3f(-1.0, 0.0, 0.0);
+		glNormal3f(-1.0, 0.0, 0.0);//left
 		glVertex3f(-halfSize, halfSize, halfSize);
 		glVertex3f(-halfSize, halfSize, -halfSize);
 		glVertex3f(-halfSize, -halfSize, -halfSize);
 		glVertex3f(-halfSize, -halfSize, halfSize);
+
+		glNormal3f(1.0, 0.0, 0.0);//right
+		glVertex3f(-halfSize1, halfSize, halfSize);
+		glVertex3f(-halfSize1, halfSize, -halfSize);
+		glVertex3f(-halfSize1, -halfSize, -halfSize);
+		glVertex3f(-halfSize1, -halfSize, halfSize);
+
+		glNormal3f(0.0, 0.0, 1.0);//front
+		glVertex3f(-halfSize, halfSize, halfSize);
+		glVertex3f(-halfSize1, halfSize, halfSize);
+		glVertex3f(-halfSize1, -halfSize, halfSize);
+		glVertex3f(-halfSize, -halfSize, halfSize);
+
+		glNormal3f(0.0, 0.0, -1.0);//back
+		glVertex3f(-halfSize, halfSize, -halfSize);
+		glVertex3f(-halfSize1, halfSize, -halfSize);
+		glVertex3f(-halfSize1, -halfSize, -halfSize);
+		glVertex3f(-halfSize, -halfSize, -halfSize);
+
+		glNormal3f(0.0, 1.0, 0.0);//top
+		glVertex3f(-halfSize, halfSize, halfSize);
+		glVertex3f(-halfSize1, halfSize, halfSize);
+		glVertex3f(-halfSize1, halfSize, -halfSize);
+		glVertex3f(-halfSize, halfSize, -halfSize);
+
+
 	}
 
 	// Draw right side:
@@ -158,15 +210,63 @@ void Maze::drawCube(int left, int right, int top, int bottom){
 		glVertex3f(halfSize, halfSize, -halfSize);
 		glVertex3f(halfSize, -halfSize, -halfSize);
 		glVertex3f(halfSize, -halfSize, halfSize);
+
+		glNormal3f(1.0, 0.0, 0.0);
+		glVertex3f(halfSize1, halfSize, halfSize);
+		glVertex3f(halfSize1, halfSize, -halfSize);
+		glVertex3f(halfSize1, -halfSize, -halfSize);
+		glVertex3f(halfSize1, -halfSize, halfSize);
+
+		glNormal3f(0.0, 0.0, 1.0);//front
+		glVertex3f(halfSize, halfSize, halfSize);
+		glVertex3f(halfSize1, halfSize, halfSize);
+		glVertex3f(halfSize1, -halfSize, halfSize);
+		glVertex3f(halfSize, -halfSize, halfSize);
+
+		glNormal3f(0.0, 0.0, -1.0);//back
+		glVertex3f(halfSize, halfSize, -halfSize);
+		glVertex3f(halfSize1, halfSize, -halfSize);
+		glVertex3f(halfSize1, -halfSize, -halfSize);
+		glVertex3f(halfSize, -halfSize, -halfSize);
+
+		glNormal3f(0.0, 1.0, 0.0);//top
+		glVertex3f(halfSize, halfSize, halfSize);
+		glVertex3f(halfSize1, halfSize, halfSize);
+		glVertex3f(halfSize1, halfSize, -halfSize);
+		glVertex3f(halfSize, halfSize, -halfSize);
 	}
 
 	// Draw back (bottom) face:
-	if (bottom){
+	if (back){
 		glNormal3f(0.0, 0.0, -1.0);
 		glVertex3f(-halfSize, halfSize, -halfSize);
 		glVertex3f(halfSize, halfSize, -halfSize);
 		glVertex3f(halfSize, -halfSize, -halfSize);
 		glVertex3f(-halfSize, -halfSize, -halfSize);
+		
+		glNormal3f(0.0, 0.0, -1.0);
+		glVertex3f(-halfSize, halfSize, -halfSize1);
+		glVertex3f(halfSize, halfSize, -halfSize1);
+		glVertex3f(halfSize, -halfSize, -halfSize1);
+		glVertex3f(-halfSize, -halfSize, -halfSize1);
+
+		glNormal3f(-1.0, 0.0, 0.0);//left
+		glVertex3f(-halfSize, halfSize, -halfSize);
+		glVertex3f(-halfSize, halfSize, -halfSize1);
+		glVertex3f(-halfSize, -halfSize, -halfSize1);
+		glVertex3f(-halfSize, -halfSize, -halfSize);
+
+		glNormal3f(1.0, 0.0, 0.0);//right
+		glVertex3f(halfSize, halfSize, -halfSize);
+		glVertex3f(halfSize, halfSize, -halfSize1);
+		glVertex3f(halfSize, -halfSize, -halfSize1);
+		glVertex3f(halfSize, -halfSize, -halfSize);
+
+		glNormal3f(0.0, 1.0, 0.0);//top
+		glVertex3f(-halfSize, halfSize, -halfSize);
+		glVertex3f(-halfSize, halfSize, -halfSize1);
+		glVertex3f(halfSize, halfSize, -halfSize1);
+		glVertex3f(halfSize, halfSize, -halfSize);
 	}
 
 	glEnd();

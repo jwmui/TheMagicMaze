@@ -54,6 +54,7 @@ std::vector<BezierCurve*> curvesH;
 Maze maze(time(NULL));
 Player *player = new Player();
 Vector3 oldE, oldD;
+bool overhead = false;
 
 void Window::initialize(void)
 {	
@@ -203,10 +204,11 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 			Globals::camera->e = Globals::camera->e + (direction * .01).normalize();
 			Globals::camera->d = Globals::camera->d + (direction * .01).normalize();
 			Globals::camera->update();
-			player->move(Globals::camera->e);
-			oldE = Globals::camera->e;
-			oldD = Globals::camera->d;
-
+			if (!overhead){
+				player->move(Globals::camera->e);
+				oldE = Globals::camera->e;
+				oldD = Globals::camera->d;
+			}
 			break;
 
 		case 'a':
@@ -217,9 +219,11 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 			Globals::camera->e = Globals::camera->e + (direction * .01).normalize();
 			Globals::camera->d = Globals::camera->d + (direction * .01).normalize();
 			Globals::camera->update();
-			player->move(Globals::camera->e);
-			oldE = Globals::camera->e;
-			oldD = Globals::camera->d;
+			if (!overhead){
+				player->move(Globals::camera->e);
+				oldE = Globals::camera->e;
+				oldD = Globals::camera->d;
+			}
 			break;
 
 		case 's':
@@ -229,9 +233,11 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 			Globals::camera->e = Globals::camera->e + (direction * -.01).normalize();
 			Globals::camera->d = Globals::camera->d + (direction * -.01).normalize();
 			Globals::camera->update();
-			player->move(Globals::camera->e);
-			oldE = Globals::camera->e;
-			oldD = Globals::camera->d;
+			if (!overhead){
+				player->move(Globals::camera->e);
+				oldE = Globals::camera->e;
+				oldD = Globals::camera->d;
+			}
 			break;
 		
 		case 'd':
@@ -242,9 +248,11 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 			Globals::camera->e = Globals::camera->e + (direction * .01).normalize();
 			Globals::camera->d = Globals::camera->d + (direction * .01).normalize();
 			Globals::camera->update();
-			player->move(Globals::camera->e);
-			oldE = Globals::camera->e;
-			oldD = Globals::camera->d;
+			if (!overhead){
+				player->move(Globals::camera->e);
+				oldE = Globals::camera->e;
+				oldD = Globals::camera->d;
+			}
 			break;
 
 		case 'r':
@@ -290,7 +298,8 @@ void Window::specialCallback(int key, int x, int y){
 			d.set(oldD[0], oldD[1], oldD[2]);
 			up.set(0.0, 1.0, 0.0);
 			Globals::camera->set(e, d, up);
-			glEnable(GL_LIGHTING);
+			//glEnable(GL_LIGHTING);
+			overhead = false;
 			break;
 		case GLUT_KEY_F2:
 			//e = 0, 24.14, 24.14 d = 0,0,0 up = 0, 1, 0
@@ -299,9 +308,9 @@ void Window::specialCallback(int key, int x, int y){
 			//glDisable(GL_LIGHTING);
 			e.set(50, 200, -50);
 			d.set(50, 0, -50);
-			up.set(0, 1, 0);
+			up.set(0, 1.0, 0);
 			Globals::camera->set(e,d,up);
-			
+			overhead = true;
 			break;
 		case GLUT_KEY_F3:
 			//e = -28.33, 11.66, 23.33 d = -5, 0, 0 up = 0, 1, 0.5
@@ -322,7 +331,7 @@ void Window::specialCallback(int key, int x, int y){
 			Globals::camera->set(e, d, up);
 			//current = &Globals::bunny;
 			//object.setToDraw(current);
-			glEnable(GL_LIGHTING);
+			//glEnable(GL_LIGHTING);
 
 			break;
 		case GLUT_KEY_F5:
@@ -333,7 +342,7 @@ void Window::specialCallback(int key, int x, int y){
 			Globals::camera->set(e, d, up);
 			//current = &Globals::bear;
 			//object.setToDraw(current);
-			glEnable(GL_LIGHTING);
+			//glEnable(GL_LIGHTING);
 
 			break;
 		case GLUT_KEY_F6:
@@ -344,7 +353,9 @@ void Window::specialCallback(int key, int x, int y){
 			Globals::camera->set(e, d, up);
 			//current = &Globals::dragon;
 			//object.setToDraw(current);
-			glEnable(GL_LIGHTING);
+			//
+			
+			//glEnable(GL_LIGHTING);
 
 			break;
 
