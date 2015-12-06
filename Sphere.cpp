@@ -20,18 +20,18 @@ Sphere::Sphere(double radius, int slices, int stacks) : Drawable()
 	shine1 = 0.078125;
 }
 
-void Sphere::draw(DrawData& data)
+void Sphere::draw()
 {
     //material.apply(amb1, dif1, spec1, shine1);
     
     glMatrixMode(GL_MODELVIEW);
     
-    glPushMatrix();
-    glMultMatrixf(toWorld.ptr());
+    //glPushMatrix();
+    //glMultMatrixf(toWorld.ptr());
     
-    glutSolidSphere(radius, slices, stacks);
+	glutSolidSphere(radius, slices, stacks);
     
-    glPopMatrix();
+   // glPopMatrix();
 }
 
 

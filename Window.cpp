@@ -20,19 +20,20 @@
 #include "BezierCurve.h"
 #include "Maze.h"
 #include <time.h>
+#include "Player.h"
 
 #define PI_OVER_2 1.57079
 
 int Window::width  = 512;   //Set window width in pixels here
 int Window::height = 512;   //Set window height in pixels here
 int spinDirection = 1;
-Drawable *current = &Globals::sphere;
+//Drawable *current = &Globals::sphere;
 float angle = 0;
 float oldX, oldY, oldZ;
 int debugSet = 0;
 Vector3 coords;
 Vector3 e, d, up;
-Rasterizer object(current, debugSet);
+//Rasterizer object(current, debugSet);
 int renderMode = 0;
 int part = 1;
 int Window::time, Window::frame=0, Window::timebase=0;
@@ -43,7 +44,7 @@ bool leftB;
 bool rightB;
 bool spotB, dirB, poiB;
 Vector3 lastPoint, curPoint, v, direction, rotAxis;
-Drawable *curLight = current;
+//Drawable *curLight = current;
 Vector3 origin(0.0, 0.0, 0.0);
 Vector4 toChange;
 BezierCurve *curve1, *curve2, *curve3, *curve4, *curveV, *curveH;
@@ -51,7 +52,8 @@ std::vector<Vector3> cPts;
 std::vector<BezierCurve*> curvesV;
 std::vector<BezierCurve*> curvesH;
 Maze maze(time(NULL));
-
+Player *player = new Player();
+Vector3 oldE, oldD;
 
 void Window::initialize(void)
 {	
@@ -81,8 +83,10 @@ void Window::initialize(void)
 	Globals::spot.spotDirection = new float[3]{direction[0], direction[1], direction[2]};
 	Globals::spot.exponent = 2.0;
 	Globals::spot.quadraticAttenuation = 0.02;
+	coords.set(0, 0, 30);
+	player->move(coords);
 
-	(*current).toWorld.identity();
+	//(*current).toWorld.identity();
 
 }
 
@@ -98,7 +102,7 @@ void Window::idleCallback()
 		//Globals::cube.spin(0.0005 * spinDirection);
     
 
-	(*current).update(Globals::updateData);
+	//(*current).update(Globals::updateData);
 
 	//fps
 	frame++;
@@ -124,7 +128,7 @@ void Window::reshapeCallback(int w, int h)
 		glMatrixMode(GL_PROJECTION);                                     //Set the OpenGL matrix mode to Projection
 		glLoadIdentity();                                                //Clear the projection matrix by loading the identity
 		gluPerspective(60.0, double(width) / (double)height, 1.0, 1000.0); //Set perspective projection viewing frustum
-		object.reshape(w, h);
+		//object.reshape(w, h);
 }
 
 //----------------------------------------------------------------------------
@@ -170,6 +174,7 @@ void Window::displayCallback()
 	glEnd();*/
 	//glDisable(GL_LIGHTING);
 	maze.draw();
+	player->draw();
     //Pop off the changes we made to the matrix stack this frame
     glPopMatrix();
     
@@ -198,6 +203,10 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 			Globals::camera->e = Globals::camera->e + (direction * .01).normalize();
 			Globals::camera->d = Globals::camera->d + (direction * .01).normalize();
 			Globals::camera->update();
+			player->move(Globals::camera->e);
+			oldE = Globals::camera->e;
+			oldD = Globals::camera->d;
+
 			break;
 
 		case 'a':
@@ -208,6 +217,9 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 			Globals::camera->e = Globals::camera->e + (direction * .01).normalize();
 			Globals::camera->d = Globals::camera->d + (direction * .01).normalize();
 			Globals::camera->update();
+			player->move(Globals::camera->e);
+			oldE = Globals::camera->e;
+			oldD = Globals::camera->d;
 			break;
 
 		case 's':
@@ -217,6 +229,9 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 			Globals::camera->e = Globals::camera->e + (direction * -.01).normalize();
 			Globals::camera->d = Globals::camera->d + (direction * -.01).normalize();
 			Globals::camera->update();
+			player->move(Globals::camera->e);
+			oldE = Globals::camera->e;
+			oldD = Globals::camera->d;
 			break;
 		
 		case 'd':
@@ -227,6 +242,9 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 			Globals::camera->e = Globals::camera->e + (direction * .01).normalize();
 			Globals::camera->d = Globals::camera->d + (direction * .01).normalize();
 			Globals::camera->update();
+			player->move(Globals::camera->e);
+			oldE = Globals::camera->e;
+			oldD = Globals::camera->d;
 			break;
 
 		case 'r':
@@ -234,25 +252,25 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 			break;
 
 		case'1':
-			 curLight = &Globals::dir;
+			 //curLight = &Globals::dir;
 			 dirB = true;
 			 spotB = false;
 			 poiB = false;
 			break;
 		case'2':
-			 curLight = &Globals::point;
+			// curLight = &Globals::point;
 			 dirB = false;
 			 spotB = false;
 			 poiB = true;
 			break;
 		case'3':
-			 curLight = &Globals::spot;
+			// curLight = &Globals::spot;
 			 dirB = false;
 			 spotB = true;
 			 poiB = false;
 			break;
 		case'0':
-			curLight = current;
+			//curLight = current;
 			dirB = false;
 			spotB = false;
 			poiB = false;
@@ -266,10 +284,10 @@ void Window::specialCallback(int key, int x, int y){
 	switch (key){
 		case GLUT_KEY_F1:
 			//cube
-			current = &Globals::sphere;
-			object.setToDraw(current);
-			e.set(0.0, 0.0, 20.0);
-			d.set(0.0, 0.0, -1.0);
+			//current = &Globals::sphere;
+			//object.setToDraw(current);
+			e.set(oldE[0], oldE[1], oldE[2]);
+			d.set(oldD[0], oldD[1], oldD[2]);
 			up.set(0.0, 1.0, 0.0);
 			Globals::camera->set(e, d, up);
 			glEnable(GL_LIGHTING);
@@ -277,10 +295,10 @@ void Window::specialCallback(int key, int x, int y){
 		case GLUT_KEY_F2:
 			//e = 0, 24.14, 24.14 d = 0,0,0 up = 0, 1, 0
 			//current = &Globals::house;
-			object.setToDraw(current);
+			//object.setToDraw(current);
 			//glDisable(GL_LIGHTING);
-			e.set(30, 100, -30);
-			d.set(25, 0, -25);
+			e.set(50, 200, -50);
+			d.set(50, 0, -50);
 			up.set(0, 1, 0);
 			Globals::camera->set(e,d,up);
 			
@@ -288,7 +306,7 @@ void Window::specialCallback(int key, int x, int y){
 		case GLUT_KEY_F3:
 			//e = -28.33, 11.66, 23.33 d = -5, 0, 0 up = 0, 1, 0.5
 			//current = &Globals::house;
-			object.setToDraw(current);
+			//object.setToDraw(current);
 			//glDisable(GL_LIGHTING);
 			e.set(-28.33, 11.66, 23.33);
 			d.set(-5, 0, 0);
@@ -303,7 +321,7 @@ void Window::specialCallback(int key, int x, int y){
 			up.set(0.0, 1.0, 0.0);
 			Globals::camera->set(e, d, up);
 			//current = &Globals::bunny;
-			object.setToDraw(current);
+			//object.setToDraw(current);
 			glEnable(GL_LIGHTING);
 
 			break;
@@ -314,7 +332,7 @@ void Window::specialCallback(int key, int x, int y){
 			up.set(0.0, 1.0, 0.0);
 			Globals::camera->set(e, d, up);
 			//current = &Globals::bear;
-			object.setToDraw(current);
+			//object.setToDraw(current);
 			glEnable(GL_LIGHTING);
 
 			break;
@@ -325,7 +343,7 @@ void Window::specialCallback(int key, int x, int y){
 			up.set(0.0, 1.0, 0.0);
 			Globals::camera->set(e, d, up);
 			//current = &Globals::dragon;
-			object.setToDraw(current);
+			//object.setToDraw(current);
 			glEnable(GL_LIGHTING);
 
 			break;

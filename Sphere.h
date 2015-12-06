@@ -14,7 +14,7 @@ public:
     
     Sphere(double, int, int);
     
-    virtual void draw(DrawData&);
+    virtual void draw();
     virtual void update(UpdateData&);
     
 };
