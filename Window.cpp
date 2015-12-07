@@ -86,7 +86,8 @@ void Window::initialize(void)
 	Globals::spot.quadraticAttenuation = 0.02;
 	coords.set(0, 0, 30);
 	player->move(coords);
-
+	oldE = Globals::camera->e;
+	oldD = Globals::camera->d;
 	//(*current).toWorld.identity();
 
 }
