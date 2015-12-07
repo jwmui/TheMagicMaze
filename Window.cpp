@@ -256,6 +256,10 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 			}
 			break;
 
+		case 'b':
+			player->togDebug();
+			break;
+
 		case 'r':
 			initialize();
 			break;

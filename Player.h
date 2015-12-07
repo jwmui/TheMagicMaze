@@ -14,7 +14,9 @@ public:
 	~Player();
 	void draw();
 	void move(Vector3);
+	void togDebug();
 	Vector3 *position;
 	Sphere *head;
+	bool debug;
 };
 
