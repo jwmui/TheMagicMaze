@@ -53,7 +53,7 @@ std::vector<BezierCurve*> curvesV;
 std::vector<BezierCurve*> curvesH;
 Maze maze(time(NULL));
 Player *player = new Player();
-Vector3 oldE, oldD;
+//Vector3 oldE, oldD;  // just use player camera instead
 bool overhead = false;
 
 void Window::initialize(void)
@@ -86,9 +86,15 @@ void Window::initialize(void)
 	Globals::spot.quadraticAttenuation = 0.02;
 	coords.set(0, 0, 30);
 	player->move(coords);
-	oldE = Globals::camera->e;
-	oldD = Globals::camera->d;
+	//oldE = Globals::camera->e;
+	//oldD = Globals::camera->d;
 	//(*current).toWorld.identity();
+    
+    // set overhead camera stuff initial here
+    Vector3 e(50, 200, -50);
+    Vector3 d(50, 0, -50);
+    Vector3 up(0, 1.0, 0);
+    Globals::overheadCamera->set(e,d,up);
 
 }
 
@@ -150,7 +156,10 @@ void Window::displayCallback()
     
     //Replace the current top of the matrix stack with the inverse camera matrix
     //This will convert all world coordiantes into camera coordiantes
-    glLoadMatrixf(Globals::camera->getInverseMatrix().ptr());
+    if(overhead)
+        glLoadMatrixf(Globals::overheadCamera->getInverseMatrix().ptr());
+    else
+        glLoadMatrixf(Globals::playerCamera->getInverseMatrix().ptr());
     
     //Bind the light to slot 0.  We do this after the camera matrix is loaded so that
     //the light position will be treated as world coordiantes
@@ -190,73 +199,82 @@ void Window::displayCallback()
 }
 
 
-void Window::keyboardCallback(unsigned char key, int x, int y)
+void Window::keyboardCallback(unsigned char key, int x, int y)  // playerCamera only for w a s d
 {
 	Matrix4 transform;
 	Matrix4 temp;
 	int x1, y1;
 	Vector3 down;
 	down.set(0, -1, 0);
+    
 	switch (key) {
 		case 'w':
-			direction = Globals::camera->d - Globals::camera->e;
+            if(overhead) return ;
+            
+			direction = Globals::playerCamera->d - Globals::playerCamera->e;
 			direction.set(direction[0], 0, direction[2]);
 			//direction.normalize();
-			Globals::camera->e = Globals::camera->e + (direction * .01).normalize();
-			Globals::camera->d = Globals::camera->d + (direction * .01).normalize();
-			Globals::camera->update();
+			Globals::playerCamera->e = Globals::playerCamera->e + (direction * .01).normalize();
+			Globals::playerCamera->d = Globals::playerCamera->d + (direction * .01).normalize();
+			Globals::playerCamera->update();
 			if (!overhead){
-                maze.doCollisionDetection(Globals::camera->e, player);
-				player->move(Globals::camera->e);  // TODO check collision detection, also don't move camera?
-				oldE = Globals::camera->e;
-				oldD = Globals::camera->d;
+                maze.doCollisionDetection(Globals::playerCamera->e, player);
+				player->move(Globals::playerCamera->e);  // TODO check collision detection, also don't move camera?
+				//oldE = Globals::camera->e;
+				//oldD = Globals::camera->d;
 			}
 			break;
 
 		case 'a':
-			direction = Globals::camera->d - Globals::camera->e;
+            if(overhead) return ;
+            
+			direction = Globals::playerCamera->d - Globals::playerCamera->e;
 			direction.set(direction[0], 0, direction[2]);
 			direction = direction.cross(down);
 			//direction.normalize();
-			Globals::camera->e = Globals::camera->e + (direction * .01).normalize();
-			Globals::camera->d = Globals::camera->d + (direction * .01).normalize();
-			Globals::camera->update();
+			Globals::playerCamera->e = Globals::playerCamera->e + (direction * .01).normalize();
+			Globals::playerCamera->d = Globals::playerCamera->d + (direction * .01).normalize();
+			Globals::playerCamera->update();
 			if (!overhead){
-                maze.doCollisionDetection(Globals::camera->e, player);
-				player->move(Globals::camera->e);  // TODO check collision detection
-				oldE = Globals::camera->e;
-				oldD = Globals::camera->d;
+                maze.doCollisionDetection(Globals::playerCamera->e, player);
+				player->move(Globals::playerCamera->e);  // TODO check collision detection
+				//oldE = Globals::camera->e;
+				//oldD = Globals::camera->d;
 			}
 			break;
 
 		case 's':
-			direction = Globals::camera->d - Globals::camera->e;
+            if(overhead) return ;
+            
+			direction = Globals::playerCamera->d - Globals::playerCamera->e;
 			direction.set(direction[0], 0, direction[2]);
 			//direction.normalize();
-			Globals::camera->e = Globals::camera->e + (direction * -.01).normalize();
-			Globals::camera->d = Globals::camera->d + (direction * -.01).normalize();
-			Globals::camera->update();
+			Globals::playerCamera->e = Globals::playerCamera->e + (direction * -.01).normalize();
+			Globals::playerCamera->d = Globals::playerCamera->d + (direction * -.01).normalize();
+			Globals::playerCamera->update();
 			if (!overhead){
-                maze.doCollisionDetection(Globals::camera->e, player);
-				player->move(Globals::camera->e);  // TODO check collision detection
-				oldE = Globals::camera->e;
-				oldD = Globals::camera->d;
+                maze.doCollisionDetection(Globals::playerCamera->e, player);
+				player->move(Globals::playerCamera->e);  // TODO check collision detection
+				//oldE = Globals::camera->e;
+				//oldD = Globals::camera->d;
 			}
 			break;
 		
 		case 'd':
-			direction = Globals::camera->d - Globals::camera->e;
+            if(overhead) return ;
+            
+			direction = Globals::playerCamera->d - Globals::playerCamera->e;
 			direction.set(direction[0], 0, direction[2]);
 			direction = down.cross(direction);
 			//direction.normalize();
-			Globals::camera->e = Globals::camera->e + (direction * .01).normalize();
-			Globals::camera->d = Globals::camera->d + (direction * .01).normalize();
-			Globals::camera->update();
+			Globals::playerCamera->e = Globals::playerCamera->e + (direction * .01).normalize();
+			Globals::playerCamera->d = Globals::playerCamera->d + (direction * .01).normalize();
+			Globals::playerCamera->update();
 			if (!overhead){
-                maze.doCollisionDetection(Globals::camera->e, player);
-				player->move(Globals::camera->e);  // TODO check collision detection
-				oldE = Globals::camera->e;
-				oldD = Globals::camera->d;
+                maze.doCollisionDetection(Globals::playerCamera->e, player);
+				player->move(Globals::playerCamera->e);  // TODO check collision detection
+				//oldE = Globals::camera->e;
+				//oldD = Globals::camera->d;
 			}
 			break;
 
@@ -304,22 +322,27 @@ void Window::specialCallback(int key, int x, int y){
 			//cube
 			//current = &Globals::sphere;
 			//object.setToDraw(current);
-			e.set(oldE[0], oldE[1], oldE[2]);
-			d.set(oldD[0], oldD[1], oldD[2]);
-			up.set(0.0, 1.0, 0.0);
-			Globals::camera->set(e, d, up);
+			
+            //e.set(oldE[0], oldE[1], oldE[2]);
+			//d.set(oldD[0], oldD[1], oldD[2]);
+			//up.set(0.0, 1.0, 0.0);
+			//Globals::camera->set(e, d, up);
 			//glEnable(GL_LIGHTING);
-			overhead = false;
-			break;
+			
+            overhead = false;  // PLAYER VIEW
+			
+            break;
 		case GLUT_KEY_F2:
 			//e = 0, 24.14, 24.14 d = 0,0,0 up = 0, 1, 0
 			//current = &Globals::house;
 			//object.setToDraw(current);
 			//glDisable(GL_LIGHTING);
-			e.set(50, 200, -50);
+			
+            /*e.set(50, 200, -50);
 			d.set(50, 0, -50);
 			up.set(0, 1.0, 0);
-			Globals::camera->set(e,d,up);
+			Globals::overheadCamera->set(e,d,up);*/
+            // ???
 			overhead = true;
 			break;
 		case GLUT_KEY_F3:
@@ -327,18 +350,18 @@ void Window::specialCallback(int key, int x, int y){
 			//current = &Globals::house;
 			//object.setToDraw(current);
 			//glDisable(GL_LIGHTING);
-			e.set(-28.33, 11.66, 23.33);
+			/*e.set(-28.33, 11.66, 23.33);
 			d.set(-5, 0, 0);
 			up.set(0, 1, 0.5);
-			Globals::camera->set(e, d, up);
+			Globals::camera->set(e, d, up);*/
 			
 			break;
 		case GLUT_KEY_F4:
 			//bunny
-			e.set(3.0, 0.0, 20.0);
+			/*e.set(3.0, 0.0, 20.0);
 			d.set(0.0, 0.0, 0.0);
 			up.set(0.0, 1.0, 0.0);
-			Globals::camera->set(e, d, up);
+			Globals::camera->set(e, d, up);*/
 			//current = &Globals::bunny;
 			//object.setToDraw(current);
 			//glEnable(GL_LIGHTING);
@@ -346,10 +369,10 @@ void Window::specialCallback(int key, int x, int y){
 			break;
 		case GLUT_KEY_F5:
 			//bear
-			e.set(3.0, 0.0, 20.0);
+			/*e.set(3.0, 0.0, 20.0);
 			d.set(0.0, 0.0, 0.0);
 			up.set(0.0, 1.0, 0.0);
-			Globals::camera->set(e, d, up);
+			Globals::camera->set(e, d, up);*/
 			//current = &Globals::bear;
 			//object.setToDraw(current);
 			//glEnable(GL_LIGHTING);
@@ -357,10 +380,10 @@ void Window::specialCallback(int key, int x, int y){
 			break;
 		case GLUT_KEY_F6:
 			//dragon
-			e.set(3.0, 0.0, 20.0);
+			/*e.set(3.0, 0.0, 20.0);
 			d.set(0.0, 0.0, 0.0);
 			up.set(0.0, 1.0, 0.0);
-			Globals::camera->set(e, d, up);
+			Globals::camera->set(e, d, up);*/
 			//current = &Globals::dragon;
 			//object.setToDraw(current);
 			//
@@ -392,28 +415,31 @@ void Window::mouseCallback(int button, int state, int x, int y){
 	}
 	
 }
-//TODO: Mouse Motion callbacks!
+//TODO: Mouse Motion callbacks!  only overhead camera
 void Window::motionCallback(int x, int y){
 	Matrix4 transform;
 	float pixel_diff;
 	float rot_angle, zoom_factor;
-	
+    
 	if(leftB){
 		curPoint = mapping(x, y);
 		direction = curPoint - lastPoint;
-		Vector4 lookAt = Globals::camera->d.toVector4(1) - Globals::camera->e.toVector4(1);
+		Vector4 lookAt = Globals::overheadCamera->d.toVector4(1) - Globals::overheadCamera->e.toVector4(1);
 		float velocity = direction.magnitude();
 		if (velocity > 0.0001){
 
 
 			if (!dirB && !poiB && !spotB){
+                if(!overhead) return ;
+
+                
 				rotAxis = lastPoint.cross(curPoint);
 				rot_angle = lastPoint.angle(curPoint);
 				//rotAxis = rotAxis.normalize();
 				transform.makeRotateArbitrary(rotAxis, rot_angle);
 				lookAt = transform * lookAt;
-				Globals::camera->d = lookAt.toVector3() + Globals::camera->e;
-				Globals::camera->update();
+				Globals::overheadCamera->d = lookAt.toVector3() + Globals::overheadCamera->e;
+				Globals::overheadCamera->update();
 			}
 			if (dirB){
 				rotAxis = lastPoint.cross(curPoint);
@@ -451,15 +477,17 @@ void Window::motionCallback(int x, int y){
 	}
 	if (rightB){
 		if (!dirB && !poiB && !spotB){
+            if(!overhead) return ;
+
 			curPoint = mapping(x, y);
 			direction = curPoint - lastPoint;
 			direction[2] = 0;
 			transform.makeTranslate(direction * 2);
-			toChange = transform * Globals::camera->e.toVector4(1);
-			Globals::camera->e = toChange.toVector3();
-			toChange = transform * Globals::camera->d.toVector4(1);
-			Globals::camera->d = toChange.toVector3();
-			Globals::camera->update();
+			toChange = transform * Globals::overheadCamera->e.toVector4(1);
+			Globals::overheadCamera->e = toChange.toVector3();
+			toChange = transform * Globals::overheadCamera->d.toVector4(1);
+			Globals::overheadCamera->d = toChange.toVector3();
+			Globals::overheadCamera->update();
 			//(*current).toWorld = transform * (*current).toWorld;
 			//coords.set((*current).toWorld.get(3, 0), (*current).toWorld.get(3, 1), (*current).toWorld.get(3, 2));
 			//coords.print("Coordinates");
@@ -499,35 +527,42 @@ Vector3 Window::mapping(int x, int y){
 	return v;
 }
 
+// only overhead camera!
 void Window::mouseWheelCallback(int wheel, int direction, int x, int y){
 	Matrix4 transform;
 	Matrix4 temp;
+    
+    
 	if (!dirB && !poiB && !spotB){
 		if (direction == -1){
+            if(!overhead) return ;
+
 			Vector3 direction;
-			direction = Globals::camera->d - Globals::camera->e;
+			direction = Globals::overheadCamera->d - Globals::overheadCamera->e;
 			direction.normalize();
 			//transform.makeTranslate(0, 0, -0.1);
 
 			//toChange = transform * Globals::camera->e.toVector4(1);
-			Globals::camera->e = Globals::camera->e + (direction * .1);
+			Globals::overheadCamera->e = Globals::overheadCamera->e + (direction * .1);
 			//toChange = transform * Globals::camera->d.toVector4(1);
-			Globals::camera->d = Globals::camera->d + (direction * .1);
-			Globals::camera->update();
+			Globals::overheadCamera->d = Globals::overheadCamera->d + (direction * .1);
+			Globals::overheadCamera->update();
 
 		}
 		if (direction == 1){
 
+            if(!overhead) return ;
+
 			Vector3 direction;
-			direction = Globals::camera->d - Globals::camera->e;
+			direction = Globals::overheadCamera->d - Globals::overheadCamera->e;
 			direction.normalize();
 			//transform.makeTranslate(0, 0, -0.1);
 
 			//toChange = transform * Globals::camera->e.toVector4(1);
-			Globals::camera->e = Globals::camera->e - (direction * .1);
-			toChange = transform * Globals::camera->d.toVector4(1);
-			Globals::camera->d = Globals::camera->d - (direction * .1);
-			Globals::camera->update();
+			Globals::overheadCamera->e = Globals::overheadCamera->e - (direction * .1);
+			toChange = transform * Globals::overheadCamera->d.toVector4(1);
+			Globals::overheadCamera->d = Globals::overheadCamera->d - (direction * .1);
+			Globals::overheadCamera->update();
 		}
 	}
 	if (poiB){

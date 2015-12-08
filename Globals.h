@@ -16,7 +16,8 @@ class Globals
     
 public:
     
-    static Camera *camera;
+    static Camera *playerCamera;   // player's view -- key callbacks, no mouse controls
+    static Camera *overheadCamera; // static overhead view -- mouse controls, no key callbacks
 
 	static Sphere sphere;
     static Light dir;

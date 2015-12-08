@@ -1,6 +1,7 @@
 #include "Globals.h"
 
-Camera* Globals::camera = new Camera();
+Camera* Globals::playerCamera = new Camera();
+Camera* Globals::overheadCamera = new Camera();
 
 Sphere Globals::sphere(5, 100, 100);
 
