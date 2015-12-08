@@ -1,6 +1,7 @@
 #include "Maze.h"
 #include <iostream>
 #include "Wall.h"
+#include "Player.h"
 
 const int size = 10;
 Cells *grid[size][size];
@@ -148,31 +149,72 @@ void Maze::draw(){
 			//drawCube(cur->leftW,cur->rightW,cur->frontW,cur->backW);
             // split this into necessary drawWall()
             int ind = j*size*4 + i*4;
-            walls->at(ind+0)->draw();
-            walls->at(ind+1)->draw();
-            walls->at(ind+2)->draw();
-            walls->at(ind+3)->draw(); 
+            walls->at(ind+0)->draw(debug);
+            walls->at(ind+1)->draw(debug);
+            walls->at(ind+2)->draw(debug);
+            walls->at(ind+3)->draw(debug);
 			glPopMatrix();
 		}
 		
 		//std::cout << "\n";
 	}
-    
-    // iterate thru data structure of walls
-        // call glPushMatrix(), glTranslatef, drawWall(), glPopMatrix()
-    
-    /*for(std::vector<Wall*>::iterator it = walls->begin(); it != walls->end(); ++it) {
-        Wall * currWall = *it;
-        glPushMatrix();
-        glTranslatef(currWall->x, currWall->y, currWall->z);
-        currWall->draw();
-        glPopMatrix();
-    }*/
 
 }
 
+Vector3 Maze::doCollisionDetection(Vector3 position, Player * player) {
+    player->setCollisionDetected(false);
+    
+    for(std::vector<Wall*>::iterator it = walls->begin(); it != walls->end(); ++it) {
+        Wall * currWall = *it;
+        currWall->setCollisionDetected(false);
+        
+        // are these right coordinates? TODO
+        
+        float x1 = position[0] - player->halfSize;
+        float x2 = position[0] + player->halfSize;
+        float z1 = position[2] - player->halfSize;
+        float z2 = position[2] + player->halfSize;
+        
+        float x3 = currWall->x3;
+        float x4 = currWall->x4;
+        float z3 = currWall->z3;
+        float z4 = currWall->z4;
+        
+        bool intersectX = false;
+        bool intersectY = false;
+        
+        if( (x3 < x1 && x1 < x4) ||
+            (x3 <= x1 && x1 < x4) ||
+            (x1 < x3 && x4 < x2) ||
+            (x3 < x2 && x2 <= x4) ||
+           (x3 < x2 && x2 < x4) ) {
+            
+            intersectX = true;
+            // TODO: prevent walking thru walls
+        }
+        
+        if( (z3 < z1 && z1 < z4) ||
+           (z3 <= z1 && z1 < z4) ||
+           (z1 < z3 && z4 < z2) ||
+           (z3 < z2 && z2 <= z4) ||
+           (z3 < z2 && z2 < z4) ) {
+            intersectY = true;
+            // TODO: prevent walking thru walls
+        }
+        
+        
+        if(intersectX && intersectY) {
+            player->setCollisionDetected(true);
+            currWall->setCollisionDetected(true);
+        }
+    }
+    
+    return position;
+}
+
+
 // refactor and move into Wall's function
-void Maze::drawCube(int left, int right, int front, int back){
+/*void Maze::drawCube(int left, int right, int front, int back){
 	float halfSize = 10;
 	float thickness = 1.0;
 	float halfSize1 = 10 + thickness;
@@ -314,8 +356,12 @@ void Maze::drawCube(int left, int right, int front, int back){
 	}
 
 	glEnd();
-}
+}*/
 
 Maze::~Maze()
 {
+}
+
+void Maze::togDebug(){
+    this->debug = !this->debug;
 }

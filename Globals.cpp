@@ -12,3 +12,4 @@ SkyBox* Globals::skyBox = new SkyBox(1000.0);
 
 DrawData Globals::drawData;
 UpdateData Globals::updateData;
+

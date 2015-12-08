@@ -14,9 +14,15 @@ public:
 	~Player();
 	void draw();
 	void move(Vector3);
-	void togDebug();
 	Vector3 *position;
 	Sphere *head;
+
+    void togDebug();
 	bool debug;
+    
+    bool collisionDetected;
+    void setCollisionDetected(bool);
+    
+    float halfSize;
 };
 

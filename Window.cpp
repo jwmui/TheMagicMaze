@@ -175,8 +175,8 @@ void Window::displayCallback()
 	glVertex3f(-50, -10, 50);
 	glEnd();*/
 	//glDisable(GL_LIGHTING);
-	maze.draw();
-	player->draw();
+    maze.draw();
+    player->draw();
     //Pop off the changes we made to the matrix stack this frame
     glPopMatrix();
     
@@ -206,7 +206,8 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 			Globals::camera->d = Globals::camera->d + (direction * .01).normalize();
 			Globals::camera->update();
 			if (!overhead){
-				player->move(Globals::camera->e);
+                maze.doCollisionDetection(Globals::camera->e, player);
+				player->move(Globals::camera->e);  // TODO check collision detection, also don't move camera?
 				oldE = Globals::camera->e;
 				oldD = Globals::camera->d;
 			}
@@ -221,7 +222,8 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 			Globals::camera->d = Globals::camera->d + (direction * .01).normalize();
 			Globals::camera->update();
 			if (!overhead){
-				player->move(Globals::camera->e);
+                maze.doCollisionDetection(Globals::camera->e, player);
+				player->move(Globals::camera->e);  // TODO check collision detection
 				oldE = Globals::camera->e;
 				oldD = Globals::camera->d;
 			}
@@ -235,7 +237,8 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 			Globals::camera->d = Globals::camera->d + (direction * -.01).normalize();
 			Globals::camera->update();
 			if (!overhead){
-				player->move(Globals::camera->e);
+                maze.doCollisionDetection(Globals::camera->e, player);
+				player->move(Globals::camera->e);  // TODO check collision detection
 				oldE = Globals::camera->e;
 				oldD = Globals::camera->d;
 			}
@@ -250,7 +253,8 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 			Globals::camera->d = Globals::camera->d + (direction * .01).normalize();
 			Globals::camera->update();
 			if (!overhead){
-				player->move(Globals::camera->e);
+                maze.doCollisionDetection(Globals::camera->e, player);
+				player->move(Globals::camera->e);  // TODO check collision detection
 				oldE = Globals::camera->e;
 				oldD = Globals::camera->d;
 			}
@@ -258,6 +262,7 @@ void Window::keyboardCallback(unsigned char key, int x, int y)
 
 		case 'b':
 			player->togDebug();
+            maze.togDebug();
 			break;
 
 		case 'r':
