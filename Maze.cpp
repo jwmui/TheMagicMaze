@@ -1,10 +1,10 @@
 #include "Maze.h"
 #include <iostream>
-
+#include "Wall.h"
 
 const int size = 10;
 Cells *grid[size][size];
-
+Wall walls[size * 4];
 Maze::Maze(int seed)
 {
 	srand(seed);
@@ -63,13 +63,13 @@ Maze::Maze(int seed)
 			break;
 		case 2:
 			std::cout << "top\n";
-			if (cur->topW && cur->y != 0){
+			if (cur->frontW && cur->y != 0){
 				Cells *neigh = grid[cur->x][cur->y - 1];
 				std::set<Cells*> *c1 = setMatch(neigh);
 				std::set<Cells*> *c2 = setMatch(cur);
 				if (c1 != c2){
-					cur->topW = 0;
-					neigh->bottomW = 0;
+					cur->frontW = 0;
+					neigh->backW = 0;
 					c1->insert(c2->begin(), c2->end());
 					c2->clear();
 					numSets--;
@@ -78,13 +78,13 @@ Maze::Maze(int seed)
 			break;
 		case 3:
 			std::cout << "bottom\n";
-			if (cur->bottomW && cur->y != size - 1){
+			if (cur->backW && cur->y != size - 1){
 				Cells *neigh = grid[cur->x][cur->y + 1];
 				std::set<Cells*>* c1 = setMatch(neigh);
 				std::set<Cells*>* c2 = setMatch(cur);
 				if (c1 != c2){
-					cur->bottomW = 0;
-					neigh->topW = 0;
+					cur->backW = 0;
+					neigh->frontW = 0;
 					c1->insert(c2->begin(), c2->end());
 					c2->clear();
 					numSets--;
@@ -97,8 +97,8 @@ Maze::Maze(int seed)
 	}
 
 	//set entrance and exit
-	grid[0][0]->topW = 0;
-	grid[size - 1][size - 1]->bottomW = 0;
+	grid[0][0]->frontW = 0;
+	grid[size - 1][size - 1]->backW = 0;
 }
 
 std::set<Cells*>* Maze::setMatch(Cells *toFind){
@@ -120,7 +120,7 @@ void Maze::draw(){
 			Cells *cur = grid[i][j];
 			glPushMatrix();
 			glTranslatef(i*20.0, 0.0, j*-20.0);
-			drawCube(cur->leftW,cur->rightW,cur->topW,cur->bottomW);
+			drawCube(cur->leftW,cur->rightW,cur->frontW,cur->backW);
 			glPopMatrix();
 		}
 		

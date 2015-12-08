@@ -8,6 +8,7 @@
 #else
 #include <GL/freeglut.h>
 #endif
+#include "Wall.h"
 
 class Maze
 {

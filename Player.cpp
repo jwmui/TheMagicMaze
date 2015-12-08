@@ -12,57 +12,56 @@ void Player::draw(){
 
 	glTranslatef((*position)[0], (*position)[1], (*position)[2]);
 	if (debug){
-		glBegin(GL_LINES);
-		//front bottom
-		glVertex3f(-3, -3, -3);
-		glVertex3f(3, -3, -3);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glBegin(GL_QUADS);
+		float halfSize = 3;
+		// Draw front face:
+		glColor3f(0,1,0);
+		glNormal3f(0.0, 0.0, 1.0);
+		glVertex3f(-halfSize, halfSize, halfSize);
+		glVertex3f(halfSize, halfSize, halfSize);
+		glVertex3f(halfSize, -halfSize, halfSize);
+		glVertex3f(-halfSize, -halfSize, halfSize);
 
-		//front top
-		glVertex3f(-3, 3, -3);
-		glVertex3f(3, 3, -3);
+		// Draw left side:
+		glNormal3f(-1.0, 0.0, 0.0);
+		glVertex3f(-halfSize, halfSize, halfSize);
+		glVertex3f(-halfSize, halfSize, -halfSize);
+		glVertex3f(-halfSize, -halfSize, -halfSize);
+		glVertex3f(-halfSize, -halfSize, halfSize);
 
-		//front left
-		glVertex3f(-3, -3, -3);
-		glVertex3f(-3, 3, -3);
+		// Draw right side:
+		glNormal3f(1.0, 0.0, 0.0);
+		glVertex3f(halfSize, halfSize, halfSize);
+		glVertex3f(halfSize, halfSize, -halfSize);
+		glVertex3f(halfSize, -halfSize, -halfSize);
+		glVertex3f(halfSize, -halfSize, halfSize);
 
-		//front right
-		glVertex3f(3, -3, -3);
-		glVertex3f(3, 3, -3);
+		// Draw back face:
+		glNormal3f(0.0, 0.0, -1.0);
+		glVertex3f(-halfSize, halfSize, -halfSize);
+		glVertex3f(halfSize, halfSize, -halfSize);
+		glVertex3f(halfSize, -halfSize, -halfSize);
+		glVertex3f(-halfSize, -halfSize, -halfSize);
 
-		//back bottom
-		glVertex3f(-3, -3, 3);
-		glVertex3f(3, -3, 3);
+		// Draw top side:
+		glNormal3f(0.0, 1.0, 0.0);
+		glVertex3f(-halfSize, halfSize, halfSize);
+		glVertex3f(halfSize, halfSize, halfSize);
+		glVertex3f(halfSize, halfSize, -halfSize);
+		glVertex3f(-halfSize, halfSize, -halfSize);
 
-		//back top
-		glVertex3f(-3, 3, 3);
-		glVertex3f(3, 3, 3);
-
-		//back left
-		glVertex3f(-3, -3, 3);
-		glVertex3f(-3, 3, 3);
-
-		//back right
-		glVertex3f(3, -3, 3);
-		glVertex3f(3, 3, 3);
-
-		//top left
-		glVertex3f(-3, 3, 3);
-		glVertex3f(-3, 3, -3);
-
-		//top right
-		glVertex3f(3, 3, 3);
-		glVertex3f(3, 3, -3);
-
-		//bottom left
-		glVertex3f(-3, -3, 3);
-		glVertex3f(-3, -3, -3);
-
-		//bottom right
-		glVertex3f(3, -3, 3);
-		glVertex3f(3, -3, -3);
+		// Draw bottom side:
+		glNormal3f(0.0, -1.0, 0.0);
+		glVertex3f(-halfSize, -halfSize, -halfSize);
+		glVertex3f(halfSize, -halfSize, -halfSize);
+		glVertex3f(halfSize, -halfSize, halfSize);
+		glVertex3f(-halfSize, -halfSize, halfSize);
 
 		glEnd();
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
+	glColor3f(.6, .6, .6);
 	glEnable(GL_CULL_FACE);
 	glutSolidSphere(3, 50, 50);
 	glDisable(GL_CULL_FACE);
