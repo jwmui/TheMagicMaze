@@ -15,6 +15,8 @@
 		7E45D6851C0D9F96004700A3 /* House.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D67C1C0D9F96004700A3 /* House.cpp */; settings = {ASSET_TAGS = (); }; };
 		7E45D6861C0D9F96004700A3 /* Flag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D67F1C0D9F96004700A3 /* Flag.cpp */; settings = {ASSET_TAGS = (); }; };
 		7E45D6871C0D9F96004700A3 /* BezierCurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D6811C0D9F96004700A3 /* BezierCurve.cpp */; settings = {ASSET_TAGS = (); }; };
+		7E966B371C16617B00A778AE /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E966B331C16617B00A778AE /* Player.cpp */; settings = {ASSET_TAGS = (); }; };
+		7E966B381C16617B00A778AE /* Wall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E966B351C16617B00A778AE /* Wall.cpp */; settings = {ASSET_TAGS = (); }; };
 		D40AFA801AD1E2E7008D61CC /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D40AFA7E1AD1E2E7008D61CC /* Shader.cpp */; };
 		D42FFC311AAFCC9C006F8E9C /* Matrix4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D42FFC2A1AAFCC9C006F8E9C /* Matrix4.cpp */; };
 		D42FFC321AAFCC9C006F8E9C /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D42FFC2C1AAFCC9C006F8E9C /* Window.cpp */; };
@@ -70,6 +72,10 @@
 		7E45D67F1C0D9F96004700A3 /* Flag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Flag.cpp; sourceTree = SOURCE_ROOT; };
 		7E45D6801C0D9F96004700A3 /* BezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierCurve.h; sourceTree = SOURCE_ROOT; };
 		7E45D6811C0D9F96004700A3 /* BezierCurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BezierCurve.cpp; sourceTree = SOURCE_ROOT; };
+		7E966B331C16617B00A778AE /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = SOURCE_ROOT; };
+		7E966B341C16617B00A778AE /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = SOURCE_ROOT; };
+		7E966B351C16617B00A778AE /* Wall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wall.cpp; sourceTree = SOURCE_ROOT; };
+		7E966B361C16617B00A778AE /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = SOURCE_ROOT; };
 		D40AFA7E1AD1E2E7008D61CC /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = SOURCE_ROOT; };
 		D40AFA7F1AD1E2E7008D61CC /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = SOURCE_ROOT; };
 		D42FFC1E1AAFC90E006F8E9C /* CSE167 Spring 2015 Starter Code */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CSE167 Spring 2015 Starter Code"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +152,10 @@
 		D42FFC201AAFC90E006F8E9C /* CSE167 Spring 2015 Starter Code */ = {
 			isa = PBXGroup;
 			children = (
+				7E966B331C16617B00A778AE /* Player.cpp */,
+				7E966B341C16617B00A778AE /* Player.h */,
+				7E966B351C16617B00A778AE /* Wall.cpp */,
+				7E966B361C16617B00A778AE /* Wall.h */,
 				7E45D6731C0D9F96004700A3 /* VertexShader.vert */,
 				7E45D6741C0D9F96004700A3 /* Tree.h */,
 				7E45D6751C0D9F96004700A3 /* Tree.cpp */,
@@ -265,10 +275,12 @@
 				D42FFC581AAFCF71006F8E9C /* Light.cpp in Sources */,
 				D42FFC331AAFCC9C006F8E9C /* Cube.cpp in Sources */,
 				7E45D6851C0D9F96004700A3 /* House.cpp in Sources */,
+				7E966B371C16617B00A778AE /* Player.cpp in Sources */,
 				D4D588151ACE591500D1F802 /* OBJObject.cpp in Sources */,
 				D42FFC541AAFCF71006F8E9C /* Drawable.cpp in Sources */,
 				D42FFC531AAFCF71006F8E9C /* Color.cpp in Sources */,
 				7E45D6821C0D9F96004700A3 /* Tree.cpp in Sources */,
+				7E966B381C16617B00A778AE /* Wall.cpp in Sources */,
 				D42FFC521AAFCF71006F8E9C /* Vector3.cpp in Sources */,
 				7E45D6721C0D97B7004700A3 /* Cells.cpp in Sources */,
 				D42FFC641AB67F52006F8E9C /* main.cpp in Sources */,

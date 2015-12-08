@@ -19,5 +19,12 @@ public:
 	void draw();
 	void drawCube(int,int,int,int);
 	~Maze();
+    
+    std::vector<Wall *>* walls = new std::vector<Wall *>();
+    
+    int LEFT=0;  // also defined in Wall.h be consistent
+    int RIGHT=1;
+    int FRONT=2;
+    int BACK=3;
 };
 

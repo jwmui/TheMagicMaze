@@ -10,11 +10,18 @@
 class Wall
 {
 public:
-	Wall(bool,float, float, float, float, int);
-	~Wall();
-	void draw();
-	float p1, p2, p3, p4;
-	int face;
-	bool valid;
+    Wall(int, float, float, float, int);
+    ~Wall();
+    float x, y, z;
+    int face; // use one of the constants LEFT, RIGHT, FRONT, BACK
+    float halfSize, thickness, halfSize1;
+    int valid; // 0 invalid, 1 valid to draw
+
+    int LEFT=0;
+    int RIGHT=1;
+    int FRONT=2;
+    int BACK=3;
+    
+    void draw();
 };
 

@@ -4,14 +4,14 @@
 
 const int size = 10;
 Cells *grid[size][size];
-Wall walls[size * 4];
+
 Maze::Maze(int seed)
 {
 	srand(seed);
 	int numSets = size*size;
 	//std::cout << "Init";
 	
-
+    // Kruskal's maze generation algorithm
 	for (int i = 0; i < size; i++){
 		for (int j = 0; j < size; j++){
 			Cells *c = new Cells(1,1,1,1,i,j);
@@ -99,6 +99,32 @@ Maze::Maze(int seed)
 	//set entrance and exit
 	grid[0][0]->frontW = 0;
 	grid[size - 1][size - 1]->backW = 0;
+    
+    // create walls data structure HERE
+    //j = y and i = x (x is col y is row)
+    for (int j = 0; j < size; j++){
+        for(int i = 0; i < size; i++){
+            Cells *cur = grid[i][j];
+            //(i*20.0, 0.0, j*-20.0);
+            //drawCube(cur->leftW,cur->rightW,cur->frontW,cur->backW);
+            // create draw from data structures of walls
+            // split this into necessary drawWall()
+            Wall * leftW = new Wall(cur->leftW, i*20.0, 0.0, j*-20.0, LEFT);
+            walls->push_back(leftW);
+
+            Wall * rightW = new Wall(cur->rightW, i*20.0, 0.0, j*-20.0, RIGHT);
+            walls->push_back(rightW);
+
+            Wall * frontW = new Wall(cur->frontW, i*20.0, 0.0, j*-20.0, FRONT);
+            walls->push_back(frontW);
+            
+            Wall * backW = new Wall(cur->backW, i*20.0, 0.0, j*-20.0, BACK);
+            walls->push_back(backW);
+
+        }
+        
+        //std::cout << "\n";
+    }
 }
 
 std::set<Cells*>* Maze::setMatch(Cells *toFind){
@@ -109,25 +135,43 @@ std::set<Cells*>* Maze::setMatch(Cells *toFind){
 			}
 		}
 	}
-    std::set<Cells*> s;
-    return &s; // shall not be reached
+    return nullptr; // shall not be reached
 }
 
 void Maze::draw(){
-	//j = y and i = x (x is col y is row)
+	//j = y and i = x (x is col, y is row)
 	for (int j = 0; j < size; j++){
 		for(int i = 0; i < size; i++){
 			Cells *cur = grid[i][j];
 			glPushMatrix();
 			glTranslatef(i*20.0, 0.0, j*-20.0);
-			drawCube(cur->leftW,cur->rightW,cur->frontW,cur->backW);
+			//drawCube(cur->leftW,cur->rightW,cur->frontW,cur->backW);
+            // split this into necessary drawWall()
+            int ind = j*size*4 + i*4;
+            walls->at(ind+0)->draw();
+            walls->at(ind+1)->draw();
+            walls->at(ind+2)->draw();
+            walls->at(ind+3)->draw(); 
 			glPopMatrix();
 		}
 		
 		//std::cout << "\n";
 	}
+    
+    // iterate thru data structure of walls
+        // call glPushMatrix(), glTranslatef, drawWall(), glPopMatrix()
+    
+    /*for(std::vector<Wall*>::iterator it = walls->begin(); it != walls->end(); ++it) {
+        Wall * currWall = *it;
+        glPushMatrix();
+        glTranslatef(currWall->x, currWall->y, currWall->z);
+        currWall->draw();
+        glPopMatrix();
+    }*/
+
 }
 
+// refactor and move into Wall's function
 void Maze::drawCube(int left, int right, int front, int back){
 	float halfSize = 10;
 	float thickness = 1.0;
