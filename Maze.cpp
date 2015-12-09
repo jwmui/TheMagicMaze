@@ -8,6 +8,17 @@ Cells *grid[size][size];
 
 Maze::Maze(int seed)
 {
+    this->seed = seed;
+    regenerate(this->seed);
+}
+
+void Maze::regenerate(int seed)
+{
+    this->seed = seed;
+    //std::cout << "seed: " << seed<< "\n";
+    walls = new std::vector<Wall *>();
+    sets = new std::vector<std::set<Cells*>>();
+    
 	srand(seed);
 	int numSets = size*size;
 	//std::cout << "Init";
@@ -27,13 +38,13 @@ Maze::Maze(int seed)
 
 		//top left = 0,0
 		Cells *cur = grid[rand() % size][rand() % size];
-		std::cout << cur->x << " " << cur->y << " ";
+		//std::cout << cur->x << " " << cur->y << " ";
 		int dir = rand() % 4;
 		//std::cout << dir;
 		switch (dir){
 
 		case 0:
-			std::cout << "left\n";
+			//std::cout << "left\n";
 			if (cur->leftW && cur->x != 0){
 				Cells *neigh = grid[cur->x - 1][cur->y];
 				std::set<Cells*>* c1 = setMatch(neigh);
@@ -48,7 +59,7 @@ Maze::Maze(int seed)
 			}
 			break;
 		case 1:
-			std::cout << "right\n";
+			//std::cout << "right\n";
 			if (cur->rightW && cur->x != size - 1){
 				Cells *neigh = grid[cur->x + 1][cur->y];
 				std::set<Cells*>* c1 = setMatch(neigh);
@@ -63,7 +74,7 @@ Maze::Maze(int seed)
 			}
 			break;
 		case 2:
-			std::cout << "top\n";
+			//std::cout << "top\n";
 			if (cur->frontW && cur->y != 0){
 				Cells *neigh = grid[cur->x][cur->y - 1];
 				std::set<Cells*> *c1 = setMatch(neigh);
@@ -78,7 +89,7 @@ Maze::Maze(int seed)
 			}
 			break;
 		case 3:
-			std::cout << "bottom\n";
+			//std::cout << "bottom\n";
 			if (cur->backW && cur->y != size - 1){
 				Cells *neigh = grid[cur->x][cur->y + 1];
 				std::set<Cells*>* c1 = setMatch(neigh);

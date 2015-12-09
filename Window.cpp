@@ -51,7 +51,7 @@ BezierCurve *curve1, *curve2, *curve3, *curve4, *curveV, *curveH;
 std::vector<Vector3> cPts;
 std::vector<BezierCurve*> curvesV;
 std::vector<BezierCurve*> curvesH;
-Maze maze(time(NULL));
+Maze maze(time(NULL)%100);
 Player *player = new Player();
 //Vector3 oldE, oldD;  // just use player camera instead
 bool overhead = false;
@@ -91,8 +91,8 @@ void Window::initialize(void)
 	//(*current).toWorld.identity();
     
     // set overhead camera stuff initial here
-    Vector3 e(50, 200, -50);
-    Vector3 d(50, 0, -50);
+    Vector3 e(85.2838, 202.843, -50 /*50, 200, -50*/);
+    Vector3 d(85.252, 4.48947, -75.5368 /*50, 0.0, -50*/);
     Vector3 up(0, 1.0, 0);
     Globals::overheadCamera->set(e,d,up);
 
@@ -116,8 +116,8 @@ void Window::idleCallback()
 	frame++;
 	time = glutGet(GLUT_ELAPSED_TIME);
 	if (time - timebase > 1000) {
-		printf("FPS:%4.2f\n",
-			frame*1000.0 / (time - timebase));
+		//printf("FPS:%4.2f\n",
+		//	frame*1000.0 / (time - timebase));
 		timebase = time;
 		frame = 0;
 	}
@@ -284,6 +284,13 @@ void Window::keyboardCallback(unsigned char key, int x, int y)  // playerCamera 
 			break;
 
 		case 'r':
+            
+            maze.regenerate(rand()%100);  // needed this to get a smaller number
+            e.set(0.0, 0.0, 30.0);
+            d.set(0.0, 0.0, -1.0);
+            up.set(0.0, 1.0, 0.0);
+            Globals::playerCamera->set(e,d,up);  // original starting location
+            
 			initialize();
 			break;
 
@@ -401,13 +408,13 @@ void Window::mouseCallback(int button, int state, int x, int y){
 		leftB = true;
 		lastPoint = mapping(x, y);
 		glMatrixMode(GL_MODELVIEW);
-		printf("press L\n");
+		//printf("press L\n");
 	}
 	if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN){
 		rightB = true;
 		lastPoint = mapping(x, y);
 		glMatrixMode(GL_MODELVIEW);
-		printf("press L\n");
+		//printf("press L\n");
 	}
 	if (state == GLUT_UP){
 		leftB = false;
@@ -439,6 +446,9 @@ void Window::motionCallback(int x, int y){
 				transform.makeRotateArbitrary(rotAxis, rot_angle);
 				lookAt = transform * lookAt;
 				Globals::overheadCamera->d = lookAt.toVector3() + Globals::overheadCamera->e;
+                Globals::overheadCamera->d.print("d updated: ");
+                Globals::overheadCamera->e.print("e updated: ");
+                Globals::overheadCamera->up.print("up updated: ");
 				Globals::overheadCamera->update();
 			}
 			if (dirB){
