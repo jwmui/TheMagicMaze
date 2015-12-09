@@ -179,6 +179,8 @@ Vector3 Maze::doCollisionDetection(Vector3 position, Player * player) {
         Wall * currWall = *it;
         currWall->setCollisionDetected(false);
         
+        if(currWall->valid == 0) continue;  // nonexistent walls don't count
+        
         // are these right coordinates? TODO
         
         float x1 = position[0] - player->halfSize;
