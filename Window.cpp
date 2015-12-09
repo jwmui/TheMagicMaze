@@ -4,6 +4,8 @@
 #ifdef __APPLE__
     #include <GLUT/glut.h>
 #else
+	#include <MMSystem.h>
+	#include <Windows.h>
     #include <GL/glut.h>
 #endif
 
@@ -58,6 +60,9 @@ bool overhead = false;
 
 void Window::initialize(void)
 {	
+	//Sound. Comment out for Mac
+	PlaySound("bgsound.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
+
 	//Setup the directional light
 	Vector4 lightPos(-5.0, 5.0, 10.0, 0.0);
 	Globals::dir.position = lightPos;
