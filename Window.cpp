@@ -32,7 +32,7 @@ float angle = 0;
 float oldX, oldY, oldZ;
 int debugSet = 0;
 Vector3 coords;
-Vector3 e, d, up;
+//Vector3 e, d, up;
 //Rasterizer object(current, debugSet);
 int renderMode = 0;
 int part = 1;
@@ -205,6 +205,7 @@ void Window::keyboardCallback(unsigned char key, int x, int y)  // playerCamera 
 	Matrix4 temp;
 	int x1, y1;
 	Vector3 down;
+    Vector3 e, up, d;
 	down.set(0, -1, 0);
     
 	switch (key) {
@@ -431,13 +432,13 @@ void Window::motionCallback(int x, int y){
 	if(leftB){
 		curPoint = mapping(x, y);
 		direction = curPoint - lastPoint;
-		Vector4 lookAt = Globals::overheadCamera->d.toVector4(1) - Globals::overheadCamera->e.toVector4(1);
+		Vector4 lookAt = Globals::playerCamera->d.toVector4(1) - Globals::playerCamera->e.toVector4(1);
 		float velocity = direction.magnitude();
 		if (velocity > 0.0001){
 
 
 			if (!dirB && !poiB && !spotB){
-                if(!overhead) return ;
+                if(overhead) return ;
 
                 
 				rotAxis = lastPoint.cross(curPoint);
@@ -445,11 +446,11 @@ void Window::motionCallback(int x, int y){
 				//rotAxis = rotAxis.normalize();
 				transform.makeRotateArbitrary(rotAxis, rot_angle);
 				lookAt = transform * lookAt;
-				Globals::overheadCamera->d = lookAt.toVector3() + Globals::overheadCamera->e;
-                Globals::overheadCamera->d.print("d updated: ");
-                Globals::overheadCamera->e.print("e updated: ");
-                Globals::overheadCamera->up.print("up updated: ");
-				Globals::overheadCamera->update();
+				Globals::playerCamera->d = lookAt.toVector3() + Globals::playerCamera->e;
+                Globals::playerCamera->d.print("d updated: ");
+                Globals::playerCamera->e.print("e updated: ");
+                Globals::playerCamera->up.print("up updated: ");
+				Globals::playerCamera->update();
 			}
 			if (dirB){
 				rotAxis = lastPoint.cross(curPoint);
@@ -487,17 +488,17 @@ void Window::motionCallback(int x, int y){
 	}
 	if (rightB){
 		if (!dirB && !poiB && !spotB){
-            if(!overhead) return ;
+            if(overhead) return ;
 
 			curPoint = mapping(x, y);
 			direction = curPoint - lastPoint;
 			direction[2] = 0;
 			transform.makeTranslate(direction * 2);
-			toChange = transform * Globals::overheadCamera->e.toVector4(1);
-			Globals::overheadCamera->e = toChange.toVector3();
-			toChange = transform * Globals::overheadCamera->d.toVector4(1);
-			Globals::overheadCamera->d = toChange.toVector3();
-			Globals::overheadCamera->update();
+			toChange = transform * Globals::playerCamera->e.toVector4(1);
+			Globals::playerCamera->e = toChange.toVector3();
+			toChange = transform * Globals::playerCamera->d.toVector4(1);
+			Globals::playerCamera->d = toChange.toVector3();
+			Globals::playerCamera->update();
 			//(*current).toWorld = transform * (*current).toWorld;
 			//coords.set((*current).toWorld.get(3, 0), (*current).toWorld.get(3, 1), (*current).toWorld.get(3, 2));
 			//coords.print("Coordinates");
@@ -537,7 +538,7 @@ Vector3 Window::mapping(int x, int y){
 	return v;
 }
 
-// only overhead camera!
+// only overhead camera! is this being used?
 void Window::mouseWheelCallback(int wheel, int direction, int x, int y){
 	Matrix4 transform;
 	Matrix4 temp;
