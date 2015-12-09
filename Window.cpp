@@ -215,15 +215,15 @@ void Window::keyboardCallback(unsigned char key, int x, int y)  // playerCamera 
 			direction = Globals::playerCamera->d - Globals::playerCamera->e;
 			direction.set(direction[0], 0, direction[2]);
 			//direction.normalize();
-			Globals::playerCamera->e = Globals::playerCamera->e + (direction * .01).normalize();
-			Globals::playerCamera->d = Globals::playerCamera->d + (direction * .01).normalize();
+            
+			/*Globals::playerCamera->*/e = Globals::playerCamera->e + (direction * .01).normalize();
+            e = maze.doCollisionDetection(/*Globals::playerCamera->*/e, player);
+            
+            Globals::playerCamera->d = Globals::playerCamera->d + e - Globals::playerCamera->e; //(direction * .01).normalize();
+            Globals::playerCamera->e = e;
 			Globals::playerCamera->update();
-			//if (!overhead){
-                maze.doCollisionDetection(Globals::playerCamera->e, player);
-				player->move(Globals::playerCamera->e);  // TODO check collision detection, also don't move camera?
-				//oldE = Globals::camera->e;
-				//oldD = Globals::camera->d;
-			//}
+			player->move(Globals::playerCamera->e);  // TODO check collision detection, also don't move camera?
+
 			break;
 
 		case 'a':
@@ -233,15 +233,15 @@ void Window::keyboardCallback(unsigned char key, int x, int y)  // playerCamera 
 			direction.set(direction[0], 0, direction[2]);
 			direction = direction.cross(down);
 			//direction.normalize();
-			Globals::playerCamera->e = Globals::playerCamera->e + (direction * .01).normalize();
-			Globals::playerCamera->d = Globals::playerCamera->d + (direction * .01).normalize();
+			
+            /*Globals::playerCamera->*/e = Globals::playerCamera->e + (direction * .01).normalize();
+            e = maze.doCollisionDetection(/*Globals::playerCamera->*/e, player);
+            
+			Globals::playerCamera->d = Globals::playerCamera->d + e - Globals::playerCamera->e; //(direction * .01).normalize();
+            Globals::playerCamera->e = e;
 			Globals::playerCamera->update();
-			//if (!overhead){
-                maze.doCollisionDetection(Globals::playerCamera->e, player);
-				player->move(Globals::playerCamera->e);  // TODO check collision detection
-				//oldE = Globals::camera->e;
-				//oldD = Globals::camera->d;
-			//}
+			player->move(Globals::playerCamera->e);  // TODO check collision detection
+
 			break;
 
 		case 's':
@@ -250,15 +250,15 @@ void Window::keyboardCallback(unsigned char key, int x, int y)  // playerCamera 
 			direction = Globals::playerCamera->d - Globals::playerCamera->e;
 			direction.set(direction[0], 0, direction[2]);
 			//direction.normalize();
-			Globals::playerCamera->e = Globals::playerCamera->e + (direction * -.01).normalize();
-			Globals::playerCamera->d = Globals::playerCamera->d + (direction * -.01).normalize();
+			
+            /*Globals::playerCamera->*/e = Globals::playerCamera->e + (direction * -.01).normalize();
+            e = maze.doCollisionDetection(/*Globals::playerCamera->*/e, player);
+            
+			Globals::playerCamera->d = Globals::playerCamera->d + e - Globals::playerCamera->e; //+ (direction * -.01).normalize();
+            Globals::playerCamera->e = e;
 			Globals::playerCamera->update();
-			//if (!overhead){
-                maze.doCollisionDetection(Globals::playerCamera->e, player);
-				player->move(Globals::playerCamera->e);  // TODO check collision detection
-				//oldE = Globals::camera->e;
-				//oldD = Globals::camera->d;
-			//}
+			player->move(Globals::playerCamera->e);  // TODO check collision detection
+
 			break;
 		
 		case 'd':
@@ -268,15 +268,15 @@ void Window::keyboardCallback(unsigned char key, int x, int y)  // playerCamera 
 			direction.set(direction[0], 0, direction[2]);
 			direction = down.cross(direction);
 			//direction.normalize();
-			Globals::playerCamera->e = Globals::playerCamera->e + (direction * .01).normalize();
-			Globals::playerCamera->d = Globals::playerCamera->d + (direction * .01).normalize();
+			
+            /*lobals::playerCamera->*/e = Globals::playerCamera->e + (direction * .01).normalize();
+            e = maze.doCollisionDetection(/*Globals::playerCamera->*/e, player);
+            
+			Globals::playerCamera->d = Globals::playerCamera->d + e - Globals::playerCamera->e;  //+ (direction * .01).normalize();
+            Globals::playerCamera->e = e;
 			Globals::playerCamera->update();
-			//if (!overhead){
-                maze.doCollisionDetection(Globals::playerCamera->e, player);
-				player->move(Globals::playerCamera->e);  // TODO check collision detection
-				//oldE = Globals::camera->e;
-				//oldD = Globals::camera->d;
-			//}
+			player->move(Globals::playerCamera->e);  // TODO check collision detection
+			
 			break;
 
 		case 'b':

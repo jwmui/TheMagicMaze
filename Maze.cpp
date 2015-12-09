@@ -124,14 +124,26 @@ void Maze::regenerate(int seed)
             Wall * leftW = new Wall(cur->leftW, i*20.0, 0.0, j*-20.0, LEFT);
             walls->push_back(leftW);
 
-            Wall * rightW = new Wall(cur->rightW, i*20.0, 0.0, j*-20.0, RIGHT);
-            walls->push_back(rightW);
+            if(i == size-1) {
+                Wall * rightW = new Wall(cur->rightW, i*20.0, 0.0, j*-20.0, RIGHT); //
+                walls->push_back(rightW);
+            }
+            else {
+                Wall * rightW = new Wall(NULL, i*20.0, 0.0, j*-20.0, RIGHT); //
+                walls->push_back(rightW);
+            }
 
-            Wall * frontW = new Wall(cur->frontW, i*20.0, 0.0, j*-20.0, FRONT);
+            Wall * frontW = new Wall(cur->frontW, i*20.0, 0.0, j*-20.0, FRONT); //
             walls->push_back(frontW);
             
-            Wall * backW = new Wall(cur->backW, i*20.0, 0.0, j*-20.0, BACK);
-            walls->push_back(backW);
+            if(j == size-1) {
+                Wall * backW = new Wall(cur->backW, i*20.0, 0.0, j*-20.0, BACK);
+                walls->push_back(backW);
+            }
+            else {
+                Wall * backW = new Wall(NULL, i*20.0, 0.0, j*-20.0, BACK);
+                walls->push_back(backW);
+            }
 
         }
         
@@ -194,31 +206,55 @@ Vector3 Maze::doCollisionDetection(Vector3 position, Player * player) {
         float z4 = currWall->z4;
         
         bool intersectX = false;
-        bool intersectY = false;
+        bool intersectZ = false;
         
+        int x = position[0];
+        float z = position[2];
+        
+        // WEIRD BC THERE'S TWO WALLS BEING GENERATED. -- FIXed
         if( (x3 < x1 && x1 < x4) ||
-            (x3 <= x1 && x1 < x4) ||
-            (x1 < x3 && x4 < x2) ||
-            (x3 < x2 && x2 <= x4) ||
+           (x1 < x3 && x4 < x2) ||
            (x3 < x2 && x2 < x4) ) {
             
             intersectX = true;
-            // TODO: prevent walking thru walls
+            
+            // prevents walking thru walls
+            // if player is going in the left direction
+            if((*player->position)[0] > position[0])
+                x = x4+player->halfSize;
+            // if player is going in the right direction
+            else if((*player->position)[0] < position[0])
+                x = x3-player->halfSize;
         }
         
         if( (z3 < z1 && z1 < z4) ||
-           (z3 <= z1 && z1 < z4) ||
            (z1 < z3 && z4 < z2) ||
-           (z3 < z2 && z2 <= z4) ||
            (z3 < z2 && z2 < z4) ) {
-            intersectY = true;
-            // TODO: prevent walking thru walls
+            intersectZ = true;
+            
+            // prevents walking thru walls
+            // if player is going in the back direction
+            if((*player->position)[2] > position[2])
+                z = z4+player->halfSize;
+            // if player is going in the forward direction
+            else if((*player->position)[2] < position[2])
+                z = z3-player->halfSize;
         }
         
         
-        if(intersectX && intersectY) {
+        if(intersectX && intersectZ) {
             player->setCollisionDetected(true);
             currWall->setCollisionDetected(true);
+            
+            /*if(x != position[0]) {
+                //std::cout << "new x: " << x << "\n";
+                //std::cout << "wall: " << x3 << " " << x4 << "\n\n";
+            }*/
+            if(!debug) {
+                position.set(x, position[1], z);
+            }
+            
+            
         }
     }
     
