@@ -21,8 +21,8 @@ public:
 
 	static Sphere sphere;
     static Light dir;
-	static Light spot;
-	static Light point;
+	//static Light spot;
+	//static Light point;
     static DrawData drawData;
     static UpdateData updateData;
 	static SkyBox *skyBox;

@@ -67,11 +67,11 @@ void Window::initialize(void)
 	Globals::dir.quadraticAttenuation = 0.02;
 	//Setup the point light
 	Vector4 lightPos1(5.0, 5.0, 10.0, 1.0);
-	Globals::point.position = lightPos1;
+	/*Globals::point.position = lightPos1;
 	Globals::point.spotCutoff = 180.0;
 	Globals::point.spotDirection = new float[3]{0.0, 0.0, -1.0};
 	Globals::point.exponent = 0.0;
-	Globals::point.quadraticAttenuation = 0.02;
+	Globals::point.quadraticAttenuation = 0.02;*/
 	//Setup the spot light
 	Vector4 lightPos2(0.0, -5.0, 10.0, 1.0);
 	Vector3 direction;
@@ -79,11 +79,11 @@ void Window::initialize(void)
 	source.set(0.0, -5.0, 10.0);
 	direction = origin - source;
 	float mag = direction.magnitude();
-	Globals::spot.position = lightPos2;
+	/*Globals::spot.position = lightPos2;
 	Globals::spot.spotCutoff = 30.0;
 	Globals::spot.spotDirection = new float[3]{direction[0], direction[1], direction[2]};
 	Globals::spot.exponent = 2.0;
-	Globals::spot.quadraticAttenuation = 0.02;
+	Globals::spot.quadraticAttenuation = 0.02;*/
 	coords.set(0, 0, 30);
 	player->move(coords);
 	//oldE = Globals::camera->e;
@@ -165,13 +165,13 @@ void Window::displayCallback()
     //the light position will be treated as world coordiantes
     //(if we didn't the light would move with the camera, why is that?)
     Globals::dir.bind(0);
-	Globals::point.bind(1);
-	Globals::spot.bind(2);
+	/*Globals::point.bind(1);
+	Globals::spot.bind(2);*/
 
 	//object.draw(renderMode);
 	Globals::dir.draw(Globals::drawData);
-	Globals::point.draw(Globals::drawData);
-	Globals::spot.draw(Globals::drawData);
+	/*Globals::point.draw(Globals::drawData);
+	Globals::spot.draw(Globals::drawData);*/
     
 	//(*current).draw(Globals::drawData);
 
@@ -465,20 +465,20 @@ void Window::motionCallback(int x, int y){
 				rot_angle = lastPoint.angle(curPoint);
 				transform.makeRotateArbitrary(rotAxis, rot_angle);
 				//transform.makeTranslate(direction * 2);
-				Globals::point.toWorld = transform * Globals::point.toWorld;
-				Vector4 lightPos(Globals::point.toWorld.get(3, 0), Globals::point.toWorld.get(3, 1), Globals::point.toWorld.get(3, 2), 1.0);
-				Globals::point.position = lightPos;
+				//Globals::point.toWorld = transform * Globals::point.toWorld;
+				//Vector4 lightPos(Globals::point.toWorld.get(3, 0), Globals::point.toWorld.get(3, 1), Globals::point.toWorld.get(3, 2), 1.0);
+				//Globals::point.position = lightPos;
 			}
 			if (spotB){
 				rotAxis = lastPoint.cross(curPoint);
 				rot_angle = lastPoint.angle(curPoint);
 				transform.makeRotateArbitrary(rotAxis, rot_angle);
 				//transform.makeTranslate(direction * 2);
-				Globals::spot.toWorld = transform * Globals::spot.toWorld;
-				Vector4 lightPos(Globals::spot.toWorld.get(3, 0), Globals::spot.toWorld.get(3, 1), Globals::spot.toWorld.get(3, 2), 1.0);
-				Globals::spot.position = lightPos;
-				Vector3 direction = origin- lightPos.toVector3();
-				Globals::spot.spotDirection = new float[3]{direction[0], direction[1], direction[2]};
+				//Globals::spot.toWorld = transform * Globals::spot.toWorld;
+				//Vector4 lightPos(Globals::spot.toWorld.get(3, 0), Globals::spot.toWorld.get(3, 1), Globals::spot.toWorld.get(3, 2), 1.0);
+				//Globals::spot.position = lightPos;
+				//Vector3 direction = origin- lightPos.toVector3();
+				//Globals::spot.spotDirection = new float[3]{direction[0], direction[1], direction[2]};
 
 			}
 
@@ -507,19 +507,19 @@ void Window::motionCallback(int x, int y){
 			curPoint = mapping(x, y);
 			direction = curPoint - lastPoint;
 			if (direction[0] > 0 && abs(direction[1])  == 0){
-				Globals::spot.exponent = Globals::spot.exponent + .5;
+				//Globals::spot.exponent = Globals::spot.exponent + .5;
 			}
 			else if (direction[0] < 0 && abs(direction[1]) == 0){
-				if (Globals::spot.exponent > 0)
-				Globals::spot.exponent = Globals::spot.exponent - .5;
+				//if (Globals::spot.exponent > 0)
+				//Globals::spot.exponent = Globals::spot.exponent - .5;
 			}
 			if (direction[1] > 0 && abs(direction[0]) == 0){
-				if (Globals::spot.spotCutoff < 90 )
-					Globals::spot.spotCutoff++;
+				//if (Globals::spot.spotCutoff < 90 )
+				//	Globals::spot.spotCutoff++;
 			}
 			else if (direction[1] < 0 && abs(direction[0]) == 0){
-				if (Globals::spot.spotCutoff > 0 )
-					Globals::spot.spotCutoff--;
+				//if (Globals::spot.spotCutoff > 0 )
+				//	Globals::spot.spotCutoff--;
 			}
 			lastPoint = curPoint;
 		}
@@ -578,29 +578,29 @@ void Window::mouseWheelCallback(int wheel, int direction, int x, int y){
 	if (poiB){
 		if (direction == -1){
 			transform.makeTranslate(0, 0, -0.1);
-			Globals::point.toWorld = transform * Globals::point.toWorld;
-			Vector4 lightPos(Globals::point.toWorld.get(3, 0), Globals::point.toWorld.get(3, 1), Globals::point.toWorld.get(3, 2), 1.0);
-			Globals::point.position = lightPos;
+			//Globals::point.toWorld = transform * Globals::point.toWorld;
+			//Vector4 lightPos(Globals::point.toWorld.get(3, 0), Globals::point.toWorld.get(3, 1), Globals::point.toWorld.get(3, 2), 1.0);
+			//Globals::point.position = lightPos;
 		}
 		if (direction == 1){
 			transform.makeTranslate(0, 0, 0.1);
-			Globals::point.toWorld = transform * Globals::point.toWorld;
-			Vector4 lightPos(Globals::point.toWorld.get(3, 0), Globals::point.toWorld.get(3, 1), Globals::point.toWorld.get(3, 2), 1.0);
-			Globals::point.position = lightPos;
+			//Globals::point.toWorld = transform * Globals::point.toWorld;
+			//Vector4 lightPos(Globals::point.toWorld.get(3, 0), Globals::point.toWorld.get(3, 1), Globals::point.toWorld.get(3, 2), 1.0);
+			//Globals::point.position = lightPos;
 		}
 	}
 	if (spotB){
 		if (direction == -1){
 			transform.makeTranslate(0, 0, -1.0);
-			Globals::spot.toWorld = transform * Globals::spot.toWorld;
-			Vector4 lightPos(Globals::spot.toWorld.get(3, 0), Globals::spot.toWorld.get(3, 1), Globals::spot.toWorld.get(3, 2), 1.0);
-			Globals::spot.position = lightPos;
+			//Globals::spot.toWorld = transform * Globals::spot.toWorld;
+			//Vector4 lightPos(Globals::spot.toWorld.get(3, 0), Globals::spot.toWorld.get(3, 1), Globals::spot.toWorld.get(3, 2), 1.0);
+			//Globals::spot.position = lightPos;
 		}
 		if (direction == 1){
 			transform.makeTranslate(0, 0, 1.0);
-			Globals::spot.toWorld = transform * Globals::spot.toWorld;
-			Vector4 lightPos(Globals::spot.toWorld.get(3, 0), Globals::spot.toWorld.get(3, 1), Globals::spot.toWorld.get(3, 2), 1.0);
-			Globals::spot.position = lightPos;
+			//Globals::spot.toWorld = transform * Globals::spot.toWorld;
+			//Vector4 lightPos(Globals::spot.toWorld.get(3, 0), Globals::spot.toWorld.get(3, 1), Globals::spot.toWorld.get(3, 2), 1.0);
+			//Globals::spot.position = lightPos;
 		}
 
 	}
