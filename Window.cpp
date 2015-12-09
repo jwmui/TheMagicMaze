@@ -209,7 +209,7 @@ void Window::keyboardCallback(unsigned char key, int x, int y)  // playerCamera 
     
 	switch (key) {
 		case 'w':
-            if(overhead) return ;
+            //if(overhead) return ;
             
 			direction = Globals::playerCamera->d - Globals::playerCamera->e;
 			direction.set(direction[0], 0, direction[2]);
@@ -217,16 +217,16 @@ void Window::keyboardCallback(unsigned char key, int x, int y)  // playerCamera 
 			Globals::playerCamera->e = Globals::playerCamera->e + (direction * .01).normalize();
 			Globals::playerCamera->d = Globals::playerCamera->d + (direction * .01).normalize();
 			Globals::playerCamera->update();
-			if (!overhead){
+			//if (!overhead){
                 maze.doCollisionDetection(Globals::playerCamera->e, player);
 				player->move(Globals::playerCamera->e);  // TODO check collision detection, also don't move camera?
 				//oldE = Globals::camera->e;
 				//oldD = Globals::camera->d;
-			}
+			//}
 			break;
 
 		case 'a':
-            if(overhead) return ;
+            //if(overhead) return ;
             
 			direction = Globals::playerCamera->d - Globals::playerCamera->e;
 			direction.set(direction[0], 0, direction[2]);
@@ -235,16 +235,16 @@ void Window::keyboardCallback(unsigned char key, int x, int y)  // playerCamera 
 			Globals::playerCamera->e = Globals::playerCamera->e + (direction * .01).normalize();
 			Globals::playerCamera->d = Globals::playerCamera->d + (direction * .01).normalize();
 			Globals::playerCamera->update();
-			if (!overhead){
+			//if (!overhead){
                 maze.doCollisionDetection(Globals::playerCamera->e, player);
 				player->move(Globals::playerCamera->e);  // TODO check collision detection
 				//oldE = Globals::camera->e;
 				//oldD = Globals::camera->d;
-			}
+			//}
 			break;
 
 		case 's':
-            if(overhead) return ;
+            //if(overhead) return ;
             
 			direction = Globals::playerCamera->d - Globals::playerCamera->e;
 			direction.set(direction[0], 0, direction[2]);
@@ -252,16 +252,16 @@ void Window::keyboardCallback(unsigned char key, int x, int y)  // playerCamera 
 			Globals::playerCamera->e = Globals::playerCamera->e + (direction * -.01).normalize();
 			Globals::playerCamera->d = Globals::playerCamera->d + (direction * -.01).normalize();
 			Globals::playerCamera->update();
-			if (!overhead){
+			//if (!overhead){
                 maze.doCollisionDetection(Globals::playerCamera->e, player);
 				player->move(Globals::playerCamera->e);  // TODO check collision detection
 				//oldE = Globals::camera->e;
 				//oldD = Globals::camera->d;
-			}
+			//}
 			break;
 		
 		case 'd':
-            if(overhead) return ;
+            //if(overhead) return ;
             
 			direction = Globals::playerCamera->d - Globals::playerCamera->e;
 			direction.set(direction[0], 0, direction[2]);
@@ -270,12 +270,12 @@ void Window::keyboardCallback(unsigned char key, int x, int y)  // playerCamera 
 			Globals::playerCamera->e = Globals::playerCamera->e + (direction * .01).normalize();
 			Globals::playerCamera->d = Globals::playerCamera->d + (direction * .01).normalize();
 			Globals::playerCamera->update();
-			if (!overhead){
+			//if (!overhead){
                 maze.doCollisionDetection(Globals::playerCamera->e, player);
 				player->move(Globals::playerCamera->e);  // TODO check collision detection
 				//oldE = Globals::camera->e;
 				//oldD = Globals::camera->d;
-			}
+			//}
 			break;
 
 		case 'b':
