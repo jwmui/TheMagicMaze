@@ -10,7 +10,7 @@
 #endif
 #include "Wall.h"
 #include "Player.h"
-
+#include "Texture.h"
 class Maze
 {
 public:
@@ -37,5 +37,7 @@ public:
     
     int seed;
     void regenerate(int);
+	Texture floorTex;
+	void load();
 };
 

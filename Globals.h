@@ -10,6 +10,7 @@
 #include "DrawData.h"
 #include "UpdateData.h"
 #include "SkyBox.h"
+#include "Texture.h"
 
 class Globals
 {

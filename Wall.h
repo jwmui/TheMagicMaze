@@ -7,7 +7,7 @@
 #include <GL/freeglut.h>
 #endif
 #include "Texture.h"
-
+#include "Globals.h"
 class Wall
 {
 public:
@@ -32,8 +32,7 @@ public:
     
     bool collisionDetected;
     void setCollisionDetected(bool);
-
-	Texture wall, wallS, floorTex;
+	Texture wallTex;
 	void load();
 };
 
