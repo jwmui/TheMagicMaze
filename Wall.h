@@ -6,11 +6,13 @@
 #else
 #include <GL/freeglut.h>
 #endif
+#include "Texture.h"
 
 class Wall
 {
 public:
     Wall(int, float, float, float, int);
+	Wall();
     ~Wall();
     
     float x, y, z;
@@ -30,5 +32,8 @@ public:
     
     bool collisionDetected;
     void setCollisionDetected(bool);
+
+	Texture wall, wallS, floorTex;
+	void load();
 };
 

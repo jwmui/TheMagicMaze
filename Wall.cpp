@@ -3,6 +3,7 @@
 
 Wall::Wall(int valid, float x, float y, float z, int face)
 {
+	
     this->valid = valid; // if not valid, don't draw
     
     this->x = x;  // center of the cube??? subtract off halfsize, add halfsize to get its edge
@@ -41,9 +42,25 @@ Wall::Wall(int valid, float x, float y, float z, int face)
     }
     
 }
+Wall::Wall(){
+
+}
 
 void Wall::draw(bool debug){
-
+	floorTex.bind();
+	glBegin(GL_QUADS);
+	glColor3f(1, 1, 1);
+	glNormal3f(0.0, 1.0, 0.0);
+	glTexCoord2f(0, 0);
+	glVertex3f(-halfSize, -halfSize, -halfSize);
+	glTexCoord2f(1, 0);
+	glVertex3f(halfSize, -halfSize, -halfSize);
+	glTexCoord2f(1, 1);
+	glVertex3f(halfSize, -halfSize, halfSize);
+	glTexCoord2f(0, 1);
+	glVertex3f(-halfSize, -halfSize, halfSize);
+	glEnd();
+	floorTex.unbind();
     if(!valid) { return; }
     
     // glTranslatef() is already called from Maze::draw()
@@ -76,6 +93,8 @@ Wall::~Wall()
 
 // refactor code -- debug mode bounding box of wall / wall itself
 void Wall::drawCube() {
+
+	
     // Draw front (top) face:
     if (this->face == FRONT){
         glNormal3f(0.0, 0.0, 1.0);//front
@@ -214,4 +233,11 @@ void Wall::drawCube() {
 
 void Wall::setCollisionDetected(bool b) {
     this->collisionDetected = b;
+}
+
+void Wall::load(){
+	printf("loaded");
+	wall = Texture("C:/Users/Jonathan/Desktop/CSE167-Spring-2015-Starter-Code-master/Ucsd-logo.ppm");
+	wallS = Texture("C:/Users/Jonathan/Desktop/CSE167-Spring-2015-Starter-Code-master/Ucsd-logo.ppm");
+	floorTex = Texture("C:/Users/Jonathan/Desktop/CSE167-Spring-2015-Starter-Code-master/stonefloor.ppm");
 }

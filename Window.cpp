@@ -4,6 +4,8 @@
 #ifdef __APPLE__
     #include <GLUT/glut.h>
 #else
+	#include <MMSystem.h>
+	#include <Windows.h>
     #include <GL/glut.h>
 #endif
 
@@ -21,6 +23,7 @@
 #include "Maze.h"
 #include <time.h>
 #include "Player.h"
+#include "Texture.h"
 
 #define PI_OVER_2 1.57079
 
@@ -55,9 +58,10 @@ Maze maze(time(NULL)%100);
 Player *player = new Player();
 //Vector3 oldE, oldD;  // just use player camera instead
 bool overhead = false;
-
 void Window::initialize(void)
 {	
+	//Sound. Comment out for Mac
+	PlaySound("bgsound.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
 	//Setup the directional light
 	Vector4 lightPos(-5.0, 5.0, 10.0, 0.0);
 	Globals::dir.position = lightPos;
@@ -175,14 +179,21 @@ void Window::displayCallback()
     
 	//(*current).draw(Globals::drawData);
 
-
-	/*glBegin(GL_QUADS);
-	glNormal3f(0.0, -1.0, 0.0);
-	glVertex3f(-50, -10, -50);
-	glVertex3f(50, -10, -50);
-	glVertex3f(50, -10, 50);
+	/*
+	floorTex.bind();
+	glBegin(GL_QUADS);
+	glNormal3f(0.0, 1.0, 0.0);
+	glTexCoord2f(0, 0);
 	glVertex3f(-50, -10, 50);
-	glEnd();*/
+	glTexCoord2f(1, 0);
+	glVertex3f(250, -10, 50);
+	glTexCoord2f(1, 1);
+	glVertex3f(250, -10, -250);
+	glTexCoord2f(0, 1);
+	glVertex3f(-50, -10, -250);
+	glEnd();
+	floorTex.unbind();
+	*/
 	//glDisable(GL_LIGHTING);
     maze.draw();
     player->draw();
@@ -607,3 +618,4 @@ void Window::mouseWheelCallback(int wheel, int direction, int x, int y){
 	}
 
 }
+
