@@ -134,8 +134,12 @@ void Maze::regenerate(int seed)
             float halfSize = 10;
             
             // let's limit the number of trees to 3 for fast rendering. but random.
-            if(numWalls == 3 && numTrees < 3) {
-                Plant * plant = new Plant(i*20.0, 0.0-halfSize, j*-20.0, 6);
+            if(numWalls == 3  /*rand() % 3 == 1*/ && numTrees < 4) {
+                Plant * plant = new Plant(i*20.0, 0.0-halfSize, j*-20.0, 6,
+                                          (rand() % 5 + 1.0) / 10.0, rand() % 50, rand() % 50,
+                                          rand() % 50, rand() % 50,
+                                          rand() % 50, rand() % 50);
+                std::cout << "plant\n";
                 plants->push_back(plant);
                 numTrees++;
             }

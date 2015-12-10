@@ -14,14 +14,15 @@
 class Plant
 {
 public:
-    Plant( float, float, float, int );
+    Plant( float, float, float, int, float, float, float,
+          float, float,
+          float, float );
     ~Plant();
     
     //float x, y, z;
-    int ROTATION;
     int n;
     std::string s;
-    float branchLength;
+    float lengthF, plusAngle, minusAngle, andAngle, caratAngle, backslashAngle, forwardslashAngle;
     
     std::vector<Vector3> drawVector;
     std::stack<std::pair<Vector3,Vector3>> prevStack;

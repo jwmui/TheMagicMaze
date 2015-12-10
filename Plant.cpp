@@ -18,7 +18,10 @@
  
  * try rotating about x with & and ^
  */
-Plant::Plant(float x, float y, float z, int n)
+Plant::Plant(float x, float y, float z, int n,
+             float lengthF, float plusAngle, float minusAngle,
+             float andAngle, float caratAngle,
+             float backslashAngle, float forwardslashAngle)
 {
     /*this->x = x;
     this->y = y;
@@ -27,10 +30,16 @@ Plant::Plant(float x, float y, float z, int n)
     this->currDirection.set(0.1,1.0,0.1);
     
     this->n = n;
-    ROTATION = 25; // degrees
     
-    this->branchLength = 0.2;
-    Matrix4 rotateZ, rotateX;
+    this->lengthF = lengthF;
+    this->plusAngle = plusAngle;
+    this->minusAngle = minusAngle;
+    this->andAngle = andAngle;
+    this->caratAngle = caratAngle;
+    this->backslashAngle = backslashAngle;
+    this->forwardslashAngle = forwardslashAngle;
+    
+    Matrix4 rotateX, rotateY, rotateZ;
     
     s = "X";
     for(int i = 0; i < n; i++) {
@@ -39,11 +48,27 @@ Plant::Plant(float x, float y, float z, int n)
         //s.erase();
         for(int j = 0; j < tempS.length(); j++) {
             if(tempS[j] == 'X') {
-                s.append("F-[[X]+X]+F[+FX]-X");
+                int randnum = rand()%6;
+                //std::cout << randnum << "\n";
+                switch(randnum) {
+                    case 0: s.append("F-[[X]+X]+F[+FX]-X"); break;
+                    case 1: s.append("F^[[X]&X]&F[&FX]^X"); break;
+                    case 2: s.append("F/[[X]\\X]\\F[\\FX]/X"); break;
+                    case 3: s.append("F+[[X]-X]-F[-FX]+X"); break;
+                    case 4: s.append("F&[[X]^X]^F[^FX]&X"); break;
+                    case 5: s.append("F\\[[X]/X]/F[/FX]\\X"); break;
+                }
                 //s.append("F−[[X]&X]+F[^FX]−X");
             }
             else if(tempS[j] == 'F') {
-                s.append("FF");
+                
+                int randnum = rand()%2;
+                //std::cout << randnum << "\n";
+                switch(randnum) {
+                    case 0: s.append("F"); break;
+                    case 1: s.append("FF"); break;
+                }
+                // s.append("FF");
             }
             else {
                 s.push_back(tempS[j]);
@@ -62,7 +87,7 @@ Plant::Plant(float x, float y, float z, int n)
                 break;
             case 'F':
                 drawVector.push_back(currPosition);
-                currPosition = currPosition +currDirection.scale(branchLength);
+                currPosition = currPosition +currDirection.scale(lengthF);
                 drawVector.push_back(currPosition);
                 //std::cout <<"F";
                 break;
@@ -77,31 +102,38 @@ Plant::Plant(float x, float y, float z, int n)
                 //std::cout <<"]";
                 break;
             case '-':
-                rotateZ.makeRotateZ(-ROTATION * M_PI / 180);  // radians
+                rotateZ.makeRotateZ(-minusAngle * M_PI / 180);  // radians
                 currDirection = rotateZ.multiply(currDirection);
                 //std::cout <<"-";
                 break;
             case '+':
-                rotateZ.makeRotateZ(ROTATION * M_PI / 180); // radians
+                rotateZ.makeRotateZ(plusAngle * M_PI / 180); // radians
                 currDirection = rotateZ.multiply(currDirection);
                 //std::cout <<"+";
                 break;
-            /*case '&':
-                rotateX.makeRotateY(-ROTATION/2 * M_PI / 180);  // radians
+            case '&':
+                rotateY.makeRotateY(-andAngle * M_PI / 180);  // radians
                 currDirection = rotateX.multiply(currDirection);
-                //std::cout <<"-";
                 break;
             case '^':
-                rotateX.makeRotateY(ROTATION/2 * M_PI / 180); // radians
+                rotateY.makeRotateY(caratAngle * M_PI / 180); // radians
                 currDirection = rotateX.multiply(currDirection);
-                //std::cout <<"+";
-                break;*/
+                break;
+            case '\\':
+                rotateX.makeRotateX(-backslashAngle * M_PI / 180);  // radians
+                currDirection = rotateX.multiply(currDirection);
+                break;
+            case '/':
+                rotateX.makeRotateX(forwardslashAngle * M_PI / 180); // radians
+                currDirection = rotateX.multiply(currDirection);
+                break;
 
         }
     }
 }
 
 void Plant::draw(){
+    glLineWidth(1.5);
     glBegin(GL_LINES);
     glColor3f(0.15, 0.51, 0.0);
     for(std::vector<Vector3>::iterator it = drawVector.begin(); it != drawVector.end(); ++it) {
