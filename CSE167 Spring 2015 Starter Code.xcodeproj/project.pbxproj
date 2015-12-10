@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E1CE67D1C190C25009194A1 /* Plant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E1CE67C1C190C25009194A1 /* Plant.cpp */; settings = {ASSET_TAGS = (); }; };
 		7E45D6711C0D97B7004700A3 /* Maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D66E1C0D97B7004700A3 /* Maze.cpp */; settings = {ASSET_TAGS = (); }; };
 		7E45D6721C0D97B7004700A3 /* Cells.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D6701C0D97B7004700A3 /* Cells.cpp */; settings = {ASSET_TAGS = (); }; };
 		7E45D6821C0D9F96004700A3 /* Tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D6751C0D9F96004700A3 /* Tree.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -53,6 +54,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7E1CE67C1C190C25009194A1 /* Plant.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plant.cpp; sourceTree = SOURCE_ROOT; };
+		7E1CE67E1C190C7B009194A1 /* Plant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plant.h; sourceTree = SOURCE_ROOT; };
 		7E45D66D1C0D97B7004700A3 /* Maze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Maze.h; sourceTree = SOURCE_ROOT; };
 		7E45D66E1C0D97B7004700A3 /* Maze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Maze.cpp; sourceTree = SOURCE_ROOT; };
 		7E45D66F1C0D97B7004700A3 /* Cells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cells.h; sourceTree = SOURCE_ROOT; };
@@ -156,6 +159,14 @@
 				7E966B341C16617B00A778AE /* Player.h */,
 				7E966B351C16617B00A778AE /* Wall.cpp */,
 				7E966B361C16617B00A778AE /* Wall.h */,
+				7E45D66D1C0D97B7004700A3 /* Maze.h */,
+				7E45D66E1C0D97B7004700A3 /* Maze.cpp */,
+				7E1CE67C1C190C25009194A1 /* Plant.cpp */,
+				7E1CE67E1C190C7B009194A1 /* Plant.h */,
+				D42FFC2C1AAFCC9C006F8E9C /* Window.cpp */,
+				D42FFC301AAFCC9C006F8E9C /* Window.h */,
+				D42FFC651AB68012006F8E9C /* Globals.cpp */,
+				D42FFC5F1AB672A8006F8E9C /* Globals.h */,
 				7E45D6731C0D9F96004700A3 /* VertexShader.vert */,
 				7E45D6741C0D9F96004700A3 /* Tree.h */,
 				7E45D6751C0D9F96004700A3 /* Tree.cpp */,
@@ -172,14 +183,8 @@
 				7E45D6801C0D9F96004700A3 /* BezierCurve.h */,
 				7E45D6811C0D9F96004700A3 /* BezierCurve.cpp */,
 				D42FFC631AB67F52006F8E9C /* main.cpp */,
-				7E45D66D1C0D97B7004700A3 /* Maze.h */,
-				7E45D66E1C0D97B7004700A3 /* Maze.cpp */,
 				7E45D66F1C0D97B7004700A3 /* Cells.h */,
 				7E45D6701C0D97B7004700A3 /* Cells.cpp */,
-				D42FFC2C1AAFCC9C006F8E9C /* Window.cpp */,
-				D42FFC301AAFCC9C006F8E9C /* Window.h */,
-				D42FFC651AB68012006F8E9C /* Globals.cpp */,
-				D42FFC5F1AB672A8006F8E9C /* Globals.h */,
 				D42FFC2D1AAFCC9C006F8E9C /* Cube.cpp */,
 				D42FFC2F1AAFCC9C006F8E9C /* Cube.h */,
 				D42FFC441AAFCF71006F8E9C /* Sphere.cpp */,
@@ -294,6 +299,7 @@
 				D42FFC5E1AAFCF71006F8E9C /* Vector4.cpp in Sources */,
 				D42FFC591AAFCF71006F8E9C /* Sphere.cpp in Sources */,
 				7E45D6871C0D9F96004700A3 /* BezierCurve.cpp in Sources */,
+				7E1CE67D1C190C25009194A1 /* Plant.cpp in Sources */,
 				D40AFA801AD1E2E7008D61CC /* Shader.cpp in Sources */,
 				D42FFC311AAFCC9C006F8E9C /* Matrix4.cpp in Sources */,
 			);

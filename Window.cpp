@@ -116,8 +116,8 @@ void Window::idleCallback()
 	frame++;
 	time = glutGet(GLUT_ELAPSED_TIME);
 	if (time - timebase > 1000) {
-		//printf("FPS:%4.2f\n",
-		//	frame*1000.0 / (time - timebase));
+		printf("FPS:%4.2f\n",
+			frame*1000.0 / (time - timebase));
 		timebase = time;
 		frame = 0;
 	}
@@ -447,9 +447,9 @@ void Window::motionCallback(int x, int y){
 				transform.makeRotateArbitrary(rotAxis, rot_angle);
 				lookAt = transform * lookAt;
 				Globals::playerCamera->d = lookAt.toVector3() + Globals::playerCamera->e;
-                Globals::playerCamera->d.print("d updated: ");
-                Globals::playerCamera->e.print("e updated: ");
-                Globals::playerCamera->up.print("up updated: ");
+                //Globals::playerCamera->d.print("d updated: ");
+                //Globals::playerCamera->e.print("e updated: ");
+                //Globals::playerCamera->up.print("up updated: ");
 				Globals::playerCamera->update();
 			}
 			if (dirB){

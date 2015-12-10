@@ -9,6 +9,7 @@
 #include <GL/freeglut.h>
 #endif
 #include "Wall.h"
+#include "Plant.h"
 #include "Player.h"
 
 class Maze
@@ -22,6 +23,7 @@ public:
 	~Maze();
     
     std::vector<Wall *>* walls;
+    std::vector<Plant *>* plants;
     
     int LEFT=0;  // also defined in Wall.h be consistent
     int RIGHT=1;

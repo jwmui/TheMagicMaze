@@ -17,6 +17,7 @@ void Maze::regenerate(int seed)
     this->seed = seed;
     //std::cout << "seed: " << seed<< "\n";
     walls = new std::vector<Wall *>();
+    plants = new std::vector<Plant *>();
     sets = new std::vector<std::set<Cells*>>();
     
 	srand(seed);
@@ -112,6 +113,8 @@ void Maze::regenerate(int seed)
 	grid[0][0]->frontW = 0;
 	grid[size - 1][size - 1]->backW = 0;
     
+    int numTrees = 0;
+    
     // create walls data structure HERE
     //j = y and i = x (x is col y is row)
     for (int j = 0; j < size; j++){
@@ -121,6 +124,22 @@ void Maze::regenerate(int seed)
             //drawCube(cur->leftW,cur->rightW,cur->frontW,cur->backW);
             // create draw from data structures of walls
             // split this into necessary drawWall()
+            
+            // using this criteria for plants. if has three walls. bc then not on path.
+            int numWalls = 0;
+            if(cur->leftW) numWalls++;
+            if(cur->rightW) numWalls++;
+            if(cur->backW) numWalls++;
+            if(cur->frontW) numWalls++;
+            float halfSize = 10;
+            
+            // let's limit the number of trees to 3 for fast rendering. but random.
+            if(numWalls == 3 && numTrees < 3) {
+                Plant * plant = new Plant(i*20.0, 0.0-halfSize, j*-20.0, 6);
+                plants->push_back(plant);
+                numTrees++;
+            }
+                
             Wall * leftW = new Wall(cur->leftW, i*20.0, 0.0, j*-20.0, LEFT);
             walls->push_back(leftW);
 
@@ -179,6 +198,15 @@ void Maze::draw(){
 			glPopMatrix();
 		}
 		
+        for (std::vector<Plant *>::iterator it = plants->begin(); it != plants->end(); ++it) {
+            //glPushMatrix();
+            Plant * p = *it;
+            //glTranslatef(p->currPosition[0], p->currPosition[1], p->currPosition[2]);
+            //p->currPosition.print("");
+            p->draw();
+            //glPopMatrix();
+        }
+        
 		//std::cout << "\n";
 	}
 
