@@ -79,7 +79,7 @@
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>C:\Users\Jonathan\Desktop\freeglut-MSVC-3.0.0-2.mp\freeglut\include;C:\Users\Jonathan\Desktop\freeglut-MSVC-3.0.0-2.mp\freeglut\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\glut\glut-3.7.6-bin\GL\freeglut-3.0.0\include\;C:\Users\Jonathan\Desktop\freeglut-MSVC-3.0.0-2.mp\freeglut\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
