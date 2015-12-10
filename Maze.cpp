@@ -8,6 +8,7 @@ Cells *grid[size][size];
 
 Maze::Maze(int seed)
 {
+	
     this->seed = seed;
     regenerate(this->seed);
 }
@@ -186,6 +187,7 @@ std::set<Cells*>* Maze::setMatch(Cells *toFind){
 }
 
 void Maze::draw(){
+	
 	//j = y and i = x (x is col, y is row)
 	for (int j = 0; j < size; j++){
 		for(int i = 0; i < size; i++){
@@ -199,6 +201,23 @@ void Maze::draw(){
             walls->at(ind+1)->draw(debug);
             walls->at(ind+2)->draw(debug);
             walls->at(ind+3)->draw(debug);
+
+			float halfSize = 10;
+			floorTex.bind();
+			glBegin(GL_QUADS);
+			glColor3f(1, 1, 1);
+			glNormal3f(0.0, 1.0, 0.0);
+			glTexCoord2f(0, 0);
+			glVertex3f(-halfSize, -halfSize, -halfSize);
+			glTexCoord2f(1, 0);
+			glVertex3f(halfSize, -halfSize, -halfSize);
+			glTexCoord2f(1, 1);
+			glVertex3f(halfSize, -halfSize, halfSize);
+			glTexCoord2f(0, 1);
+			glVertex3f(-halfSize, -halfSize, halfSize);
+			glEnd();
+			floorTex.unbind();
+
 			glPopMatrix();
 		}
 		
@@ -293,156 +312,14 @@ Vector3 Maze::doCollisionDetection(Vector3 position, Player * player) {
     return position;
 }
 
-
-// refactor and move into Wall's function
-/*void Maze::drawCube(int left, int right, int front, int back){
-	float halfSize = 10;
-	float thickness = 1.0;
-	float halfSize1 = 10 + thickness;
-
-	glBegin(GL_QUADS);
-	glColor3f(0.5, 0.5, 0.5);
-	// Draw front (top) face:
-	if (front){
-		glNormal3f(0.0, 0.0, 1.0);//front
-		glVertex3f(-halfSize, halfSize, halfSize);
-		glVertex3f(halfSize, halfSize, halfSize);
-		glVertex3f(halfSize, -halfSize, halfSize);
-		glVertex3f(-halfSize, -halfSize, halfSize);
-
-		glNormal3f(0.0, 0.0, -1.0);//back
-		glVertex3f(-halfSize, halfSize, halfSize1);
-		glVertex3f(halfSize, halfSize, halfSize1);
-		glVertex3f(halfSize, -halfSize, halfSize1);
-		glVertex3f(-halfSize, -halfSize, halfSize1);
-
-		glNormal3f(-1.0, 0.0, 0.0);//left
-		glVertex3f(-halfSize, halfSize, halfSize);
-		glVertex3f(-halfSize, halfSize, halfSize1);
-		glVertex3f(-halfSize, -halfSize, halfSize1);
-		glVertex3f(-halfSize, -halfSize, halfSize);
-
-		glNormal3f(1.0, 0.0, 0.0);//right
-		glVertex3f(halfSize, halfSize, halfSize);
-		glVertex3f(halfSize, halfSize, halfSize1);
-		glVertex3f(halfSize, -halfSize, halfSize1);
-		glVertex3f(halfSize, -halfSize, halfSize);
-
-		glNormal3f(0.0, 1.0, 0.0);//top
-		glVertex3f(-halfSize, halfSize, halfSize);
-		glVertex3f(-halfSize, halfSize, halfSize1);
-		glVertex3f(halfSize, halfSize, halfSize1);
-		glVertex3f(halfSize, halfSize, halfSize);
-	}
-
-	// Draw left side:
-	if (left){
-		glNormal3f(-1.0, 0.0, 0.0);//left
-		glVertex3f(-halfSize, halfSize, halfSize);
-		glVertex3f(-halfSize, halfSize, -halfSize);
-		glVertex3f(-halfSize, -halfSize, -halfSize);
-		glVertex3f(-halfSize, -halfSize, halfSize);
-
-		glNormal3f(1.0, 0.0, 0.0);//right
-		glVertex3f(-halfSize1, halfSize, halfSize);
-		glVertex3f(-halfSize1, halfSize, -halfSize);
-		glVertex3f(-halfSize1, -halfSize, -halfSize);
-		glVertex3f(-halfSize1, -halfSize, halfSize);
-
-		glNormal3f(0.0, 0.0, 1.0);//front
-		glVertex3f(-halfSize, halfSize, halfSize);
-		glVertex3f(-halfSize1, halfSize, halfSize);
-		glVertex3f(-halfSize1, -halfSize, halfSize);
-		glVertex3f(-halfSize, -halfSize, halfSize);
-
-		glNormal3f(0.0, 0.0, -1.0);//back
-		glVertex3f(-halfSize, halfSize, -halfSize);
-		glVertex3f(-halfSize1, halfSize, -halfSize);
-		glVertex3f(-halfSize1, -halfSize, -halfSize);
-		glVertex3f(-halfSize, -halfSize, -halfSize);
-
-		glNormal3f(0.0, 1.0, 0.0);//top
-		glVertex3f(-halfSize, halfSize, halfSize);
-		glVertex3f(-halfSize1, halfSize, halfSize);
-		glVertex3f(-halfSize1, halfSize, -halfSize);
-		glVertex3f(-halfSize, halfSize, -halfSize);
-
-
-	}
-
-	// Draw right side:
-	if (right){
-		glNormal3f(1.0, 0.0, 0.0);
-		glVertex3f(halfSize, halfSize, halfSize);
-		glVertex3f(halfSize, halfSize, -halfSize);
-		glVertex3f(halfSize, -halfSize, -halfSize);
-		glVertex3f(halfSize, -halfSize, halfSize);
-
-		glNormal3f(1.0, 0.0, 0.0);
-		glVertex3f(halfSize1, halfSize, halfSize);
-		glVertex3f(halfSize1, halfSize, -halfSize);
-		glVertex3f(halfSize1, -halfSize, -halfSize);
-		glVertex3f(halfSize1, -halfSize, halfSize);
-
-		glNormal3f(0.0, 0.0, 1.0);//front
-		glVertex3f(halfSize, halfSize, halfSize);
-		glVertex3f(halfSize1, halfSize, halfSize);
-		glVertex3f(halfSize1, -halfSize, halfSize);
-		glVertex3f(halfSize, -halfSize, halfSize);
-
-		glNormal3f(0.0, 0.0, -1.0);//back
-		glVertex3f(halfSize, halfSize, -halfSize);
-		glVertex3f(halfSize1, halfSize, -halfSize);
-		glVertex3f(halfSize1, -halfSize, -halfSize);
-		glVertex3f(halfSize, -halfSize, -halfSize);
-
-		glNormal3f(0.0, 1.0, 0.0);//top
-		glVertex3f(halfSize, halfSize, halfSize);
-		glVertex3f(halfSize1, halfSize, halfSize);
-		glVertex3f(halfSize1, halfSize, -halfSize);
-		glVertex3f(halfSize, halfSize, -halfSize);
-	}
-
-	// Draw back (bottom) face:
-	if (back){
-		glNormal3f(0.0, 0.0, -1.0);
-		glVertex3f(-halfSize, halfSize, -halfSize);
-		glVertex3f(halfSize, halfSize, -halfSize);
-		glVertex3f(halfSize, -halfSize, -halfSize);
-		glVertex3f(-halfSize, -halfSize, -halfSize);
-		
-		glNormal3f(0.0, 0.0, -1.0);
-		glVertex3f(-halfSize, halfSize, -halfSize1);
-		glVertex3f(halfSize, halfSize, -halfSize1);
-		glVertex3f(halfSize, -halfSize, -halfSize1);
-		glVertex3f(-halfSize, -halfSize, -halfSize1);
-
-		glNormal3f(-1.0, 0.0, 0.0);//left
-		glVertex3f(-halfSize, halfSize, -halfSize);
-		glVertex3f(-halfSize, halfSize, -halfSize1);
-		glVertex3f(-halfSize, -halfSize, -halfSize1);
-		glVertex3f(-halfSize, -halfSize, -halfSize);
-
-		glNormal3f(1.0, 0.0, 0.0);//right
-		glVertex3f(halfSize, halfSize, -halfSize);
-		glVertex3f(halfSize, halfSize, -halfSize1);
-		glVertex3f(halfSize, -halfSize, -halfSize1);
-		glVertex3f(halfSize, -halfSize, -halfSize);
-
-		glNormal3f(0.0, 1.0, 0.0);//top
-		glVertex3f(-halfSize, halfSize, -halfSize);
-		glVertex3f(-halfSize, halfSize, -halfSize1);
-		glVertex3f(halfSize, halfSize, -halfSize1);
-		glVertex3f(halfSize, halfSize, -halfSize);
-	}
-
-	glEnd();
-}*/
-
 Maze::~Maze()
 {
 }
 
 void Maze::togDebug(){
     this->debug = !this->debug;
+}
+
+void Maze::load(){
+	floorTex = Texture("C:/Users/Jonathan/Desktop/CSE167-Spring-2015-Starter-Code-master/stonefloor.ppm");
 }

@@ -25,16 +25,6 @@ void SkyBox::draw(){
 	glColor3f(1.0, 1.0, 1.0);
 	back.bind();
 	glBegin(GL_QUADS);
-	/*
-	glTexCoord2f(1, 0);
-	glVertex3f(-halfSize, halfSize, halfSize);
-	glTexCoord2f(1, 1);
-	glVertex3f(-halfSize, -halfSize, halfSize);
-	glTexCoord2f(0, 1);
-	glVertex3f(halfSize, -halfSize, halfSize);
-	glTexCoord2f(0, 0);
-	glVertex3f(halfSize, halfSize, halfSize);
-	*/
 	glTexCoord2f(1, 0);
 	glVertex3f(-halfSize, halfSize, halfSize);
 	glTexCoord2f(0, 0);
@@ -43,7 +33,6 @@ void SkyBox::draw(){
 	glVertex3f(halfSize, -halfSize, halfSize);
 	glTexCoord2f(1, 1);
 	glVertex3f(-halfSize, -halfSize, halfSize);
-	
 	glEnd();
 	back.unbind();
 
@@ -59,16 +48,7 @@ void SkyBox::draw(){
 	glVertex3f(-halfSize, -halfSize, -halfSize);
 	glTexCoord2f(1, 0);
 	glVertex3f(-halfSize, halfSize, -halfSize);
-	/*
-	glTexCoord2f(0, 0);
-	glVertex3f(-halfSize, halfSize, halfSize);
-	glTexCoord2f(1, 0);
-	glVertex3f(-halfSize, halfSize, -halfSize);
-	glTexCoord2f(1, 1);
-	glVertex3f(-halfSize, -halfSize, -halfSize);
-	glTexCoord2f(0, 1);
-	glVertex3f(-halfSize, -halfSize, halfSize);
-	*/
+
 	glEnd();
 	left.unbind();
 
@@ -76,16 +56,6 @@ void SkyBox::draw(){
 	glColor3f(1.0, 1.0, 1.0);
 	right.bind();
 	glBegin(GL_QUADS);
-	/*
-	glTexCoord2f(1, 0);
-	glVertex3f(halfSize, halfSize, halfSize);
-	glTexCoord2f(1, 1);
-	glVertex3f(halfSize, -halfSize, halfSize);
-	glTexCoord2f(0, 1);
-	glVertex3f(halfSize, -halfSize, -halfSize);
-	glTexCoord2f(0, 0);
-	glVertex3f(halfSize, halfSize, -halfSize);
-	*/
 	glTexCoord2f(1, 0);
 	glVertex3f(halfSize, halfSize, halfSize);
 	glTexCoord2f(0, 0);
@@ -93,8 +63,7 @@ void SkyBox::draw(){
 	glTexCoord2f(0, 1);
 	glVertex3f(halfSize, -halfSize, -halfSize);
 	glTexCoord2f(1, 1);
-	glVertex3f(halfSize, -halfSize, halfSize);
-	
+	glVertex3f(halfSize, -halfSize, halfSize);	
 	glEnd();
 	right.unbind();
 
@@ -110,16 +79,6 @@ void SkyBox::draw(){
 	glVertex3f(halfSize, -halfSize, -halfSize);
 	glTexCoord2f(1, 0);
 	glVertex3f(halfSize, halfSize, -halfSize);
-	/*
-	glTexCoord2f(0, 0);
-	glVertex3f(-halfSize, halfSize, -halfSize);
-	glTexCoord2f(1, 0);
-	glVertex3f(halfSize, halfSize, -halfSize);
-	glTexCoord2f(1, 1);
-	glVertex3f(halfSize, -halfSize, -halfSize);
-	glTexCoord2f(0, 1);
-	glVertex3f(-halfSize, -halfSize, -halfSize);*/
-	
 	glEnd();
 	front.unbind();
 
@@ -135,16 +94,6 @@ void SkyBox::draw(){
 	glVertex3f(halfSize, halfSize, -halfSize);
 	glTexCoord2f(1, 0);
 	glVertex3f(halfSize, halfSize, halfSize);
-	/*
-	glTexCoord2f(0, 0);
-	glVertex3f(-halfSize, halfSize, halfSize);
-	glTexCoord2f(1, 0);
-	glVertex3f(halfSize, halfSize, halfSize);
-	glTexCoord2f(1, 1);
-	glVertex3f(halfSize, halfSize, -halfSize);
-	glTexCoord2f(0, 1);
-	glVertex3f(-halfSize, halfSize, -halfSize);
-	*/
 	glEnd();
 	top.unbind();
 
@@ -160,16 +109,6 @@ void SkyBox::draw(){
 	glVertex3f(halfSize, -halfSize, halfSize);
 	glTexCoord2f(1, 0);
 	glVertex3f(halfSize, -halfSize, -halfSize);
-	/*
-	glTexCoord2f(0, 0);
-	glVertex3f(-halfSize, -halfSize, -halfSize);
-	glTexCoord2f(1, 0);
-	glVertex3f(halfSize, -halfSize, -halfSize);
-	glTexCoord2f(1, 1);
-	glVertex3f(halfSize, -halfSize, halfSize);
-	glTexCoord2f(0, 1);
-	glVertex3f(-halfSize, -halfSize, halfSize);
-	*/
 	glEnd();
 	base.unbind();
 

@@ -1,9 +1,9 @@
 #include "Wall.h"
-
-
+#include "Maze.h"
+int front = 0;
 Wall::Wall(int valid, float x, float y, float z, int face)
 {
-	
+	load();
     this->valid = valid; // if not valid, don't draw
     
     this->x = x;  // center of the cube??? subtract off halfsize, add halfsize to get its edge
@@ -47,29 +47,17 @@ Wall::Wall(){
 }
 
 void Wall::draw(bool debug){
-	floorTex.bind();
-	glBegin(GL_QUADS);
-	glColor3f(1, 1, 1);
-	glNormal3f(0.0, 1.0, 0.0);
-	glTexCoord2f(0, 0);
-	glVertex3f(-halfSize, -halfSize, -halfSize);
-	glTexCoord2f(1, 0);
-	glVertex3f(halfSize, -halfSize, -halfSize);
-	glTexCoord2f(1, 1);
-	glVertex3f(halfSize, -halfSize, halfSize);
-	glTexCoord2f(0, 1);
-	glVertex3f(-halfSize, -halfSize, halfSize);
-	glEnd();
-	floorTex.unbind();
+	
     if(!valid) { return; }
     
     // glTranslatef() is already called from Maze::draw()
     
     // DRAW THE WALL
-    glBegin(GL_QUADS);
+    //glBegin(GL_QUADS);
     glColor3f(0.5, 0.5, 0.5);
+	
     drawCube();
-    glEnd();
+   // glEnd();
     
     // DRAW THE BOUNDING BOX
     if(debug) {
@@ -96,137 +84,170 @@ void Wall::drawCube() {
 
 	
     // Draw front (top) face:
-    if (this->face == FRONT){
+	if (this->face == FRONT){
+		
+		wallTex.bind();
+		glBegin(GL_QUADS);
         glNormal3f(0.0, 0.0, 1.0);//front
+		glTexCoord2f(0, 1);
         glVertex3f(-halfSize, halfSize, halfSize);
+		glTexCoord2f(1, 1);
         glVertex3f(halfSize, halfSize, halfSize);
+		glTexCoord2f(1, 0);
         glVertex3f(halfSize, -halfSize, halfSize);
+		glTexCoord2f(0, 0);
         glVertex3f(-halfSize, -halfSize, halfSize);
-        
+		glEnd();
+		wallTex.unbind();
+		glBegin(GL_QUADS);
         glNormal3f(0.0, 0.0, -1.0);//back
         glVertex3f(-halfSize, halfSize, halfSize1);
         glVertex3f(halfSize, halfSize, halfSize1);
         glVertex3f(halfSize, -halfSize, halfSize1);
         glVertex3f(-halfSize, -halfSize, halfSize1);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(-1.0, 0.0, 0.0);//left
         glVertex3f(-halfSize, halfSize, halfSize);
         glVertex3f(-halfSize, halfSize, halfSize1);
         glVertex3f(-halfSize, -halfSize, halfSize1);
         glVertex3f(-halfSize, -halfSize, halfSize);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(1.0, 0.0, 0.0);//right
         glVertex3f(halfSize, halfSize, halfSize);
         glVertex3f(halfSize, halfSize, halfSize1);
         glVertex3f(halfSize, -halfSize, halfSize1);
         glVertex3f(halfSize, -halfSize, halfSize);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(0.0, 1.0, 0.0);//top
         glVertex3f(-halfSize, halfSize, halfSize);
         glVertex3f(-halfSize, halfSize, halfSize1);
         glVertex3f(halfSize, halfSize, halfSize1);
         glVertex3f(halfSize, halfSize, halfSize);
+		glEnd();
     }
     
     // Draw left side:
     else if (this->face == LEFT){
+
+		glBegin(GL_QUADS);
         glNormal3f(-1.0, 0.0, 0.0);//left
         glVertex3f(-halfSize, halfSize, halfSize);
         glVertex3f(-halfSize, halfSize, -halfSize);
         glVertex3f(-halfSize, -halfSize, -halfSize);
         glVertex3f(-halfSize, -halfSize, halfSize);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(1.0, 0.0, 0.0);//right
         glVertex3f(-halfSize1, halfSize, halfSize);
         glVertex3f(-halfSize1, halfSize, -halfSize);
         glVertex3f(-halfSize1, -halfSize, -halfSize);
         glVertex3f(-halfSize1, -halfSize, halfSize);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(0.0, 0.0, 1.0);//front
         glVertex3f(-halfSize, halfSize, halfSize);
         glVertex3f(-halfSize1, halfSize, halfSize);
         glVertex3f(-halfSize1, -halfSize, halfSize);
         glVertex3f(-halfSize, -halfSize, halfSize);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(0.0, 0.0, -1.0);//back
         glVertex3f(-halfSize, halfSize, -halfSize);
         glVertex3f(-halfSize1, halfSize, -halfSize);
         glVertex3f(-halfSize1, -halfSize, -halfSize);
         glVertex3f(-halfSize, -halfSize, -halfSize);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(0.0, 1.0, 0.0);//top
         glVertex3f(-halfSize, halfSize, halfSize);
         glVertex3f(-halfSize1, halfSize, halfSize);
         glVertex3f(-halfSize1, halfSize, -halfSize);
         glVertex3f(-halfSize, halfSize, -halfSize);
-        
+		glEnd();
         
     }
     
     // Draw right side:
     else if (this->face == RIGHT){
+
+		glBegin(GL_QUADS);
         glNormal3f(1.0, 0.0, 0.0);
         glVertex3f(halfSize, halfSize, halfSize);
         glVertex3f(halfSize, halfSize, -halfSize);
         glVertex3f(halfSize, -halfSize, -halfSize);
         glVertex3f(halfSize, -halfSize, halfSize);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(1.0, 0.0, 0.0);
         glVertex3f(halfSize1, halfSize, halfSize);
         glVertex3f(halfSize1, halfSize, -halfSize);
         glVertex3f(halfSize1, -halfSize, -halfSize);
         glVertex3f(halfSize1, -halfSize, halfSize);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(0.0, 0.0, 1.0);//front
         glVertex3f(halfSize, halfSize, halfSize);
         glVertex3f(halfSize1, halfSize, halfSize);
         glVertex3f(halfSize1, -halfSize, halfSize);
         glVertex3f(halfSize, -halfSize, halfSize);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(0.0, 0.0, -1.0);//back
         glVertex3f(halfSize, halfSize, -halfSize);
         glVertex3f(halfSize1, halfSize, -halfSize);
         glVertex3f(halfSize1, -halfSize, -halfSize);
         glVertex3f(halfSize, -halfSize, -halfSize);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(0.0, 1.0, 0.0);//top
         glVertex3f(halfSize, halfSize, halfSize);
         glVertex3f(halfSize1, halfSize, halfSize);
         glVertex3f(halfSize1, halfSize, -halfSize);
         glVertex3f(halfSize, halfSize, -halfSize);
+		glEnd();
     }
     
     // Draw back (bottom) face:
     else if (this->face == BACK){
+
+		glBegin(GL_QUADS);
         glNormal3f(0.0, 0.0, -1.0);
         glVertex3f(-halfSize, halfSize, -halfSize);
         glVertex3f(halfSize, halfSize, -halfSize);
         glVertex3f(halfSize, -halfSize, -halfSize);
         glVertex3f(-halfSize, -halfSize, -halfSize);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(0.0, 0.0, -1.0);
         glVertex3f(-halfSize, halfSize, -halfSize1);
         glVertex3f(halfSize, halfSize, -halfSize1);
         glVertex3f(halfSize, -halfSize, -halfSize1);
         glVertex3f(-halfSize, -halfSize, -halfSize1);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(-1.0, 0.0, 0.0);//left
         glVertex3f(-halfSize, halfSize, -halfSize);
         glVertex3f(-halfSize, halfSize, -halfSize1);
         glVertex3f(-halfSize, -halfSize, -halfSize1);
         glVertex3f(-halfSize, -halfSize, -halfSize);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(1.0, 0.0, 0.0);//right
         glVertex3f(halfSize, halfSize, -halfSize);
         glVertex3f(halfSize, halfSize, -halfSize1);
         glVertex3f(halfSize, -halfSize, -halfSize1);
         glVertex3f(halfSize, -halfSize, -halfSize);
-        
+		glEnd();
+		glBegin(GL_QUADS);
         glNormal3f(0.0, 1.0, 0.0);//top
         glVertex3f(-halfSize, halfSize, -halfSize);
         glVertex3f(-halfSize, halfSize, -halfSize1);
         glVertex3f(halfSize, halfSize, -halfSize1);
         glVertex3f(halfSize, halfSize, -halfSize);
+		glEnd();
     }
 }
 
@@ -236,8 +257,5 @@ void Wall::setCollisionDetected(bool b) {
 }
 
 void Wall::load(){
-	printf("loaded");
-	wall = Texture("C:/Users/Jonathan/Desktop/CSE167-Spring-2015-Starter-Code-master/Ucsd-logo.ppm");
-	wallS = Texture("C:/Users/Jonathan/Desktop/CSE167-Spring-2015-Starter-Code-master/Ucsd-logo.ppm");
-	floorTex = Texture("C:/Users/Jonathan/Desktop/CSE167-Spring-2015-Starter-Code-master/stonefloor.ppm");
+	wallTex = Texture("C:/Users/Jonathan/Desktop/CSE167-Spring-2015-Starter-Code-master/wallTex.ppm");
 }

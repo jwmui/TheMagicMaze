@@ -1,0 +1,197 @@
+﻿Build started 12/9/2015 8:49:27 PM.
+     1>Project "E:\Andrew Documents\CSE 167\TheMagicMaze\Cube.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\glut\glut-3.7.6-bin\GL\freeglut-3.0.0\include\\" /I"C:\Users\Jonathan\Desktop\freeglut-MSVC-3.0.0-2.mp\freeglut\include" /Zi /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _CONSOLE /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt ..\..\GLee5_4\GLee.c
+         GLee.c
+     1>..\..\GLee5_4\GLee.c(15923): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>..\..\GLee5_4\GLee.c(16006): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+     1>..\..\GLee5_4\GLee.c(16010): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(356) : see declaration of 'sprintf'
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\glut\glut-3.7.6-bin\GL\freeglut-3.0.0\include\\" /I"C:\Users\Jonathan\Desktop\freeglut-MSVC-3.0.0-2.mp\freeglut\include" /Zi /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _CONSOLE /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt BezierCurve.cpp Cells.cpp Flag.cpp House.cpp main.cpp Camera.cpp Color.cpp Cube.cpp Light.cpp Material.cpp Matrix4.cpp Drawable.cpp DrawData.cpp Maze.cpp Rasterizer.cpp Shader.cpp SkyBox.cpp Sphere.cpp Texture.cpp Tree.cpp UpdateData.cpp Vector3.cpp Vector4.cpp Window.cpp Globals.cpp OBJObject.cpp
+         BezierCurve.cpp
+     1>BezierCurve.cpp(34): warning C4305: '+=' : truncation from 'double' to 'float'
+         Cells.cpp
+         Flag.cpp
+     1>e:\andrew documents\cse 167\themagicmaze\Flag.h(18): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>Flag.cpp(60): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Flag.cpp(61): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Flag.cpp(62): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Flag.cpp(63): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Flag.cpp(64): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Flag.cpp(65): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Flag.cpp(67): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Flag.cpp(77): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>Flag.cpp(80): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>Flag.cpp(83): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>Flag.cpp(86): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+         House.cpp
+         main.cpp
+         Camera.cpp
+         Color.cpp
+     1>Color.cpp(60): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Color.cpp(64): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+         Cube.cpp
+     1>Cube.cpp(25): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         Light.cpp
+     1>Light.cpp(20): warning C4305: '=' : truncation from 'double' to 'float'
+         Material.cpp
+         Matrix4.cpp
+     1>Matrix4.cpp(306): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Matrix4.cpp(307): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Matrix4.cpp(310): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Matrix4.cpp(324): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Matrix4.cpp(325): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Matrix4.cpp(327): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Matrix4.cpp(328): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+         Drawable.cpp
+         DrawData.cpp
+         Maze.cpp
+     1>Maze.cpp(124): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Maze.cpp(128): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Maze.cpp(132): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Maze.cpp(136): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Maze.cpp(140): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Maze.cpp(144): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Maze.cpp(171): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>Maze.cpp(211): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>Maze.cpp(224): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>Maze.cpp(227): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>Maze.cpp(254): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         Rasterizer.cpp
+     1>Rasterizer.cpp(93): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>Rasterizer.cpp(94): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>Rasterizer.cpp(97): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>Rasterizer.cpp(98): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>Rasterizer.cpp(101): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>Rasterizer.cpp(102): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>Rasterizer.cpp(105): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>Rasterizer.cpp(106): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>Rasterizer.cpp(115): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Rasterizer.cpp(117): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Rasterizer.cpp(119): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Rasterizer.cpp(121): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Rasterizer.cpp(123): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Rasterizer.cpp(125): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+     1>Rasterizer.cpp(142): warning C4305: '=' : truncation from 'double' to 'float'
+     1>Rasterizer.cpp(178): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>Rasterizer.cpp(179): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Rasterizer.cpp(268): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Rasterizer.cpp(280): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Rasterizer.cpp(292): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>Rasterizer.cpp(331): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Rasterizer.cpp(336): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Rasterizer.cpp(341): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Rasterizer.cpp(359): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Rasterizer.cpp(361): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Rasterizer.cpp(363): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Rasterizer.cpp(384): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Rasterizer.cpp(389): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Rasterizer.cpp(394): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+         Shader.cpp
+     1>Shader.cpp(92): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(211) : see declaration of 'fopen'
+         SkyBox.cpp
+     1>SkyBox.cpp(22): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         Sphere.cpp
+     1>Sphere.cpp(18): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>Sphere.cpp(19): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Texture.cpp
+     1>Texture.cpp(90): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(211) : see declaration of 'fopen'
+     1>Texture.cpp(108): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(304) : see declaration of 'sscanf'
+         Tree.cpp
+         Generating Code...
+         Compiling...
+         UpdateData.cpp
+         Vector3.cpp
+         Vector4.cpp
+         Window.cpp
+     1>e:\andrew documents\cse 167\themagicmaze\Flag.h(18): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>Window.cpp(67): warning C4305: '=' : truncation from 'double' to 'float'
+     1>Window.cpp(94): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>Window.cpp(95): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>Window.cpp(219): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>Window.cpp(237): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>Window.cpp(254): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>Window.cpp(272): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>Window.cpp(206): warning C4101: 'y1' : unreferenced local variable
+     1>Window.cpp(206): warning C4101: 'x1' : unreferenced local variable
+     1>Window.cpp(429): warning C4101: 'pixel_diff' : unreferenced local variable
+     1>Window.cpp(430): warning C4101: 'zoom_factor' : unreferenced local variable
+     1>Window.cpp(533): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Window.cpp(535): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>Window.cpp(536): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>Window.cpp(557): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>Window.cpp(559): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>Window.cpp(573): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>Window.cpp(575): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>Window.cpp(581): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>Window.cpp(587): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Globals.cpp
+         OBJObject.cpp
+     1>OBJObject.cpp(43): warning C4305: '=' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(45): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(46): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(47): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(48): warning C4305: '=' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(52): warning C4305: '=' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(55): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(60): warning C4305: '=' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(61): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(62): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(63): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(64): warning C4305: '=' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(85): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(86): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(87): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(94): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(95): warning C4305: '=' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(100): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(101): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(191): warning C4305: '=' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(192): warning C4305: '=' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(193): warning C4305: '=' : truncation from 'double' to 'float'
+     1>OBJObject.cpp(314): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>OBJObject.cpp(315): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>OBJObject.cpp(316): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         Generating Code...
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /l"0x0409" /nologo /fo"Release\CSE167 HW5.res" "CSE167 HW5.rc" 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Release\CSE167 HW5.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Jonathan\Desktop\freeglut-MSVC-3.0.0-2.mp\freeglut\lib" GLee.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:LIBC.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Release\CSE167 HW5.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Release\CSE167 HW5.lib" /MACHINE:X86 /SAFESEH "Release\CSE167 HW5.res"
+         Release\GLee.obj
+         Release\BezierCurve.obj
+         Release\Cells.obj
+         Release\Flag.obj
+         Release\House.obj
+         Release\main.obj
+         Release\Camera.obj
+         Release\Color.obj
+         Release\Cube.obj
+         Release\Light.obj
+         Release\Material.obj
+         Release\Matrix4.obj
+         Release\Drawable.obj
+         Release\DrawData.obj
+         Release\Maze.obj
+         Release\Rasterizer.obj
+         Release\Shader.obj
+         Release\SkyBox.obj
+         Release\Sphere.obj
+         Release\Texture.obj
+         Release\Tree.obj
+         Release\UpdateData.obj
+         Release\Vector3.obj
+         Release\Vector4.obj
+         Release\Window.obj
+         Release\Globals.obj
+         Release\OBJObject.obj
+     1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/OPT:ICF' specification
+     1>LINK : fatal error LNK1181: cannot open input file 'GLee.lib'
+     1>Done Building Project "E:\Andrew Documents\CSE 167\TheMagicMaze\Cube.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:09.60

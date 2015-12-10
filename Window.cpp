@@ -21,6 +21,7 @@
 #include "SkyBox.h"
 #include "BezierCurve.h"
 #include "Maze.h"
+#include "Wall.h"
 #include <time.h>
 #include "Player.h"
 #include "Texture.h"
@@ -54,15 +55,17 @@ BezierCurve *curve1, *curve2, *curve3, *curve4, *curveV, *curveH;
 std::vector<Vector3> cPts;
 std::vector<BezierCurve*> curvesV;
 std::vector<BezierCurve*> curvesH;
-Maze maze(time(NULL)%100);
+Maze maze(time(NULL) % 100);
 Player *player = new Player();
 //Vector3 oldE, oldD;  // just use player camera instead
 bool overhead = false;
+Wall wall;
 void Window::initialize(void)
-{	
-	//Sound. COMMENT out for Mac
-	//PlaySound("bgsound.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
-    
+{
+	maze.load();
+	//Sound. Comment out for Mac
+	PlaySound("bgsound.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
+
 	//Setup the directional light
 	Vector4 lightPos(-5.0, 5.0, 10.0, 0.0);
 	Globals::dir.position = lightPos;
